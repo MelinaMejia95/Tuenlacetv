@@ -1,0 +1,71 @@
+<body ng-app="myAppModule">
+  <div class="container z-depth-4">
+    <img class="responsive-img img" data-delay="50" src="assets/angular-logo.svg" alt="Angular">
+    <img class="responsive-img img2" data-delay="50" src="assets/angular-logo.svg" alt="Angular">
+    <div class="deep-container">
+      <h3>Ingresa</h3>
+      <div class="row" ng-app="Alert" >
+        <!--<form class="col s12" method="get">-->
+          <div class="row">
+            <div class="input-field col s12 login-lenght">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="email" type="email" class="validate">
+              <label for="email" class="label-login">Nombre de usuario</label>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 login-lenght">
+                <i class="material-icons prefix">vpn_key</i>
+                <input id="password" type="password" class="validate">
+                <label for="password" class="label-login">Contraseña</label>
+              </div>
+            </div>
+          </div>
+          <div ng-controller="myAppController">
+          <button class="btn waves-effect waves-light  light-blue darken-3" id="submit" type="submit" name="conectar"
+          ng-click="message()">Conectar
+            <i class="material-icons right">send</i>
+          </button>
+          <input type="text" value="{{evento}}">
+
+        </div>
+       <!-- </form>-->
+      </div>
+    </div>
+  </div>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-sweetalert/SweetAlert.min.js"></script>
+  <script src="node_modules/sweetalert/lib/sweet-alert.min.js"></script>
+  <script>
+
+    //var miApp = angular.module('eventos', [])
+    myAppModule.controller('myAppController', ['$scope', function($scope){
+      $scope.message = function(){
+        $scope.evento = "CLICK"
+      }
+
+    } ])
+
+    /*myAppModule.controller('myAppController', function($scope) {
+    
+      $scope.message = function() {
+       console.log("Hello")
+      };
+    });*/
+
+  </script>
+
+</body>
+
+<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>->
+
+<!--
+<script>
+  var app = angular.module("Alert", []);
+  app.controller("AlertController", function($scope) {
+    $scope.submit = function () {
+      $scope.text = "click"
+        console.log("Clicked")
+    }
+  });
+</script>
+-->
