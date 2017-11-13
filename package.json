@@ -21,12 +21,14 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@toverux/ngsweetalert2": "^2.0.1",
     "core-js": "^2.4.1",
+    "jquery": "3.2.1",
     "materialize-css": "^0.100.2",
     "rxjs": "^5.4.2",
     "sweetalert": "^2.0.8",
-    "zone.js": "^0.8.14",
-    "jquery": "3.2.1"
+    "sweetalert2": "^6.11.5",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/cli": "1.4.5",
