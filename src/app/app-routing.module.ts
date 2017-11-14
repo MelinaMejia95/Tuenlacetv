@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ZonasComponent } from './zonas/zonas.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { LoginComponent } from './login/login.component';
+import { BarriosComponent } from './barrios/barrios.component'
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'zonas', component: ZonasComponent},
-  { path: 'principal', component: PrincipalComponent}
+  { path: 'principal', component: PrincipalComponent},
+  { path: 'barrios', component: BarriosComponent}
 ];
 
 @NgModule({
