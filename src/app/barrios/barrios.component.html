@@ -39,7 +39,7 @@
               folder_shared</i></a>
         </div>
         <div class="input-field col s2 button-right">
-            <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la zona)', 
+            <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el barrio)', 
             confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
           <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
             <i class="material-icons">delete</i>
@@ -121,21 +121,24 @@
 
 <div id="modal2" class="modal">
     <div class="modal-content">
-      <h4>Actualizar Zona</h4>
+      <h4>Actualizar Barrio</h4>
       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input disabled id="codigo" type="text" class="validate">
-              <label for="last_name">Código</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="codigo" type="text" class="validate input-nombre">
-              <label for="nombre">Nombre</label>
-            </div>
-          </div>
-        </form>
+        <select>
+            <option value="" disabled selected>Zonas</option>
+            <option value="1">Zona1</option>
+            <option value="2">Zona2</option>
+          </select>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input disabled id="codigo" type="text" class="validate">
+        <label for="last_name">Código</label>
       </div>
+      <div class="input-field col s6">
+        <input id="codigo" type="text" class="validate input-nombre">
+        <label for="nombre">Nombre</label>
+      </div>
+    </div>
     </div>
     <div class="modal-footer">
         <a class="waves-effect waves-light btn">Guardar</a>
