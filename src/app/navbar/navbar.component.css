@@ -5,16 +5,21 @@
     align-content: center
 }
 
-.nav-bar {
-    margin-left: 10px
-}
-
 .wrapper {
     padding-left: 300px;
+    margin-left: 300px;
+    width: 1049px;
 }
 
-.right-nav {
-    margin-top: 64px
+.brand-logo {
+    margin-left: 0px;
+    height: 64px
+}
+
+.text-logo {
+    color: white;
+    font-size: 30px;
+    text-align: center
 }
 
 .color-back {
