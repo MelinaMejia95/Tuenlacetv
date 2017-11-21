@@ -51,3 +51,8 @@ body {
     flex: 1 0 auto;
   }
       
+.page-footer {
+    margin-top: 503px;
+    margin-left: 301px;
+    width: 1065px;
+}

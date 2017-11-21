@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ZonasComponent } from './zonas/zonas.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { BarriosComponent } from './barrios/barrios.component';
+import { TarifasComponent } from './tarifas/tarifas.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BarriosComponent } from './barrios/barrios.component';
     PrincipalComponent,
     NavbarComponent,
     ZonasComponent,
-    BarriosComponent
+    BarriosComponent,
+    TarifasComponent
   ],
   imports: [
     BrowserModule,
