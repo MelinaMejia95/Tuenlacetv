@@ -12,7 +12,9 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    jQuery(".button-collapse").sideNav(); 
+    jQuery(".button-collapse").sideNav();
+    jQuery(".collapsible").collapsible();
+    jQuery(".dropdown-button").dropdown("open");
   }
 
 }

@@ -16,8 +16,8 @@
     
     .table-cuadro {
         padding-top: 100px;
-        width: 800px;
-        margin-left: 80px;
+        width: 870px;
+        margin-left: 40px;
     }
     
     .input-cuadro {
@@ -38,7 +38,7 @@
         margin-left: auto;
         left: auto;
         right: auto;
-    }
+    } 
     
     .input-right {
         margin-left: 100px;
@@ -46,18 +46,26 @@
     
     .button-right {
         margin-right: 10px;
-        padding: 10px
+        padding: 20px
     }
     
-    .modal {
-        width: 500px;
-    }
-    
-    .input-nombre {
-        width: 200px
-    }
 
     .container-table {
-        max-height: 15rem;
+        max-height: 18rem;
         overflow-y: scroll;
+    }
+
+    .card {
+        margin-left: 310px;
+        margin-top: 20px;
+        width: 1026px;
+        height: 530px;
+        margin-bottom: 0
+    }
+
+    .card .card-content {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 0px;
+        border-radius: 0 0 2px 2px;
     }

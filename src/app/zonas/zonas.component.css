@@ -5,7 +5,8 @@ width: 978px;
 height: 300px;
 margin-top: 40px;
 height: 479px;
-border-radius: 2em
+border-radius: 2em;
+
 }
 
 .label-cuadro {
@@ -49,9 +50,17 @@ border-radius: 2em
 
 .modal {
     width: 500px;
-    height: 280px
+    opacity: .5 !important;
 }
 
 .input-nombre {
     width: 200px
+}
+.container-400 {
+    width: 410px !important;
+}
+.container-table {
+    max-height: 15rem;
+    overflow-y: scroll;
+    
 }

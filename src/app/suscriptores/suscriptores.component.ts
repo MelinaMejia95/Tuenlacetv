@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 declare let jQuery: any;
 
 @Component({
-  selector: 'app-tarifas',
-  templateUrl: './tarifas.component.html',
-  styleUrls: ['./tarifas.component.css']
+  selector: 'app-suscriptores',
+  templateUrl: './suscriptores.component.html',
+  styleUrls: ['./suscriptores.component.css']
 })
-export class TarifasComponent implements OnInit {
+export class SuscriptoresComponent implements OnInit {
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class TarifasComponent implements OnInit {
 
     jQuery('select').material_select(); 
     jQuery('.modal').modal();
+    
   }
 
 }
-

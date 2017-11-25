@@ -49,9 +49,13 @@
     
     .modal {
         width: 500px;
-        height: 370px
     }
     
     .input-nombre {
-        width: 200px
+        width: 200px;
+    }
+
+    .container-table {
+        max-height: 15rem;
+        overflow-y: scroll;
     }

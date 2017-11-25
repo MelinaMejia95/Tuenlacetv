@@ -61,3 +61,9 @@ body {
     margin-left: 301px;
     width: 1065px;
 }
+.nav-principal {
+    padding-left: 0;
+}
+.nav-principal .nav-wrapper {
+    width: 101.5%;
+}
