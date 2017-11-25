@@ -12,6 +12,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BarriosComponent } from './barrios/barrios.component';
 import { TarifasComponent } from './tarifas/tarifas.component';
 import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
+import { NavbarPrincipalComponent } from './navbar-principal/navbar-principal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
     ZonasComponent,
     BarriosComponent,
     TarifasComponent,
-    SuscriptoresComponent
+    SuscriptoresComponent,
+    NavbarPrincipalComponent
   ],
   imports: [
     BrowserModule,

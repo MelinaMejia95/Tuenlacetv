@@ -1,7 +1,114 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 
-<div class="cuadro">
+<main>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title">Tarifas</span>
+          <div class="row">
+            <div class="input-field col s2">
+              <select>
+                <option value="" disabled selected>Buscar por</option>
+                <option value="1">Código</option>
+                <option value="2">Concepto</option>
+              </select>
+            </div>
+            <div class="input-field col s2">
+              <input id="last_name" type="text" class="validate">
+            </div>
+            <div class="input-field col s2">
+              <a class="waves-effect waves-light btn">Buscar</a>
+            </div>
+            <div class="input-field col s6" style="width: 347px; margin-left: 301px; margin-top: -72px;">
+              <div class="row">
+                <div class="input-field col s1 button-right">
+                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal1">
+                    <i class="material-icons">person_add</i>
+                  </a>
+                </div>
+                <div class="input-field col s1 button-right">
+                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal2">
+                    <i class="material-icons">edit</i>
+                  </a>
+                </div>
+                <div class="input-field col s1 button-right">
+                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1  modal-trigger" href="#modal3">
+                    <i class="material-icons">
+                      folder_shared</i>
+                  </a>
+                </div>
+                <div class="input-field col s1 button-right">
+                  <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la tarifa?', 
+                      confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
+                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            <div class="col s12 container-table">
+
+              <table class="bordered centered">
+                <thead>
+                  <tr>
+                    <th>Código Zona</th>
+                    <th>Nombre Zona</th>
+                    <th>Nombre Concepto</th>
+                    <th>Código</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test5" />
+                      <label for="test5">Red</label>
+                    </td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test6" />
+                      <label for="test6">Red</label>
+                    </td>
+                    <td>Jellybean</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test7" />
+                      <label for="test7">Red</label>
+                    </td>
+                    <td>Lollipop</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                    <td>Eclair</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="cuadro">
   <div class="row input-cuadro">
     <div class="row">
       <h3 class="col 12 black-text label-cuadro">Tarifas</h3>
@@ -93,7 +200,7 @@
         </td>
         <td>Lollipop</td>
         <td>Eclair</td>
-        <td>Eclair</td>
+        <td>Eclair</td> 
         <td>Eclair</td>
         <td>Eclair</td>
       </tr>
@@ -101,9 +208,10 @@
   </table>
       </div>
   </div>
-</div>
+</div>-->
+</main>
 
-<div id="modal1" class="modal">
+<div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Crear Tarifa</h4>
     <div class="row">
@@ -130,14 +238,14 @@
             <label for="nombre">Valor</label>
           </div>
         </div>
-          <div class="row">
-            <select>
-              <option value="" disabled selected>Estado</option>
-              <option value="1">Activo</option>
-              <option value="2">Inactivo</option>
-            </select>
-          </div>
-        
+        <div class="row">
+          <select>
+            <option value="" disabled selected>Estado</option>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+          </select>
+        </div>
+
       </form>
     </div>
   </div>
@@ -146,43 +254,43 @@
   </div>
 </div>
 
-<div id="modal2" class="modal">
+<div id="modal2" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Actualizar Tarifa</h4>
     <div class="row">
-        <form>
-          <div class="row">
-            <select class="input-field col s12 m6">
-              <option value="" disabled selected>Zonas</option>
-              <option value="1">Zona1</option>
-              <option value="2">Zona2</option>
-            </select>
-            <select class="input-field col s12 m6">
-              <option value="" disabled selected>Concepto</option>
-              <option value="1">Concepto1</option>
-              <option value="2">Concepto2</option>
-            </select>
+      <form>
+        <div class="row">
+          <select class="input-field col s12 m6">
+            <option value="" disabled selected>Zonas</option>
+            <option value="1">Zona1</option>
+            <option value="2">Zona2</option>
+          </select>
+          <select class="input-field col s12 m6">
+            <option value="" disabled selected>Concepto</option>
+            <option value="1">Concepto1</option>
+            <option value="2">Concepto2</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input disabled id="codigo" type="text" class="validate">
+            <label for="last_name">Código</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12 m6">
-              <input disabled id="codigo" type="text" class="validate">
-              <label for="last_name">Código</label>
-            </div>
-            <div class="input-field col s12 m6">
-              <input id="codigo" type="text" class="validate input-nombre">
-              <label for="nombre">Valor</label>
-            </div>
+          <div class="input-field col s12 m6">
+            <input id="codigo" type="text" class="validate input-nombre">
+            <label for="nombre">Valor</label>
           </div>
-            <div class="row">
-              <select>
-                <option value="" disabled selected>Estado</option>
-                <option value="1">Activo</option>
-                <option value="2">Inactivo</option>
-              </select>
-            </div>
-          
-        </form>
-      </div>
+        </div>
+        <div class="row">
+          <select>
+            <option value="" disabled selected>Estado</option>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+          </select>
+        </div>
+
+      </form>
+    </div>
   </div>
   <div class="modal-footer">
     <a class="waves-effect waves-light btn">Guardar</a>
@@ -211,13 +319,13 @@
           </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
-              <label>Valor: </label>
-            </div>
-            <div class="input-field col s12 m6">
-              <label>Estado: </label>
-            </div>
+          <div class="input-field col s12 m6">
+            <label>Valor: </label>
           </div>
+          <div class="input-field col s12 m6">
+            <label>Estado: </label>
+          </div>
+        </div>
       </form>
     </div>
   </div>
