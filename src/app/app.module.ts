@@ -13,6 +13,7 @@ import { BarriosComponent } from './barrios/barrios.component';
 import { TarifasComponent } from './tarifas/tarifas.component';
 import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
 import { NavbarPrincipalComponent } from './navbar-principal/navbar-principal.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarPrincipalComponent } from './navbar-principal/navbar-principal.co
     BarriosComponent,
     TarifasComponent,
     SuscriptoresComponent,
-    NavbarPrincipalComponent
+    NavbarPrincipalComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

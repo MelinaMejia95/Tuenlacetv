@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
- 
+
 <main>
   <div class="row">
     <div class="col s12 m6">
@@ -45,7 +45,7 @@
                   </a>
                 </div>
                 <div class="input-field col s1 button-right">
-                  <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el barrio?', 
+                  <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el suscriptor?', 
                       confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
                   <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                     <i class="material-icons">delete</i>
@@ -57,69 +57,69 @@
 
         </div>
         <div class="card-action">
-            <div class="row">
-                <div class="col s12 container-table">
-                  <table class="bordered centered">
-                    <thead>
-                      <tr>
-                          <th>Código</th>
-                          <th>Primer Nombre</th>
-                          <th>Segundo Nombre</th>
-                          <th>Primer Apellido</th>
-                          <th>Segundo Apellido</th>
-                          <th>Dirección</th>
-                          <th>Teléfono</th>
-                          <th>Estado</th>
-                          <th>Saldo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test5" />
-                          <label for="test5">Red</label>
-                        </td>
-                        <td>Eclair</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test6" />
-                          <label for="test6">Red</label>
-                        </td>
-                        <td>Jellybean</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+          <div class="row">
+            <div class="col s12 container-table">
+              <table class="bordered centered">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Saldo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test5" />
+                      <label for="test5">Red</label>
+                    </td>
+                    <td>Eclair</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test6" />
+                      <label for="test6">Red</label>
+                    </td>
+                    <td>Jellybean</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test7" />
+                      <label for="test7">Red</label>
+                    </td>
+                    <td>Lollipop</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test7" />
+                      <label for="test7">Red</label>
+                    </td>
+                    <td>Lollipop</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test7" />
+                      <label for="test7">Red</label>
+                    </td>
+                    <td>Lollipop</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="group1" type="radio" id="test7" />
+                      <label for="test7">Red</label>
+                    </td>
+                    <td>Lollipop</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -405,10 +405,50 @@
             <label for="ciudad">Ciudad</label>
           </div>
           <div class="input-field col s12 m3">
-            <input id="dir_cor" type="text" class="validate input-nombre">
-            <label for="dir_cor">Dir correspondencia</label>
+            <label for="date">Fecha nacimiento</label>
+            <input id="date" type="text" class="datepicker">
           </div>
         </div>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="email" type="email" class="validate">
+            <label for="email">Correo</label>
+          </div>
+          <select class="input-field col s12 m3">
+            <option value="" disabled selected>Tipo Persona</option>
+            <option value="1">Zona1</option>
+            <option value="2">Zona2</option>
+          </select>
+          <select class="input-field col s12 m3">
+            <option value="" disabled selected>Vendedor</option>
+            <option value="1">Zona1</option>
+            <option value="2">Zona2</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <label for="date">Fecha afiliación</label>
+            <input id="date" type="text" class="datepicker">
+          </div>
+        </div>
+        <div class="row">
+            <select class="input-field col s12 m3">
+              <option value="" disabled selected>Tarifa</option>
+              <option value="1">Zona1</option>
+              <option value="2">Zona2</option>
+            </select>
+            <div class="input-field col s12 m3">
+                <input id="ciudad" type="text" class="validate input-nombre">
+                <label for="ciudad">Valor descuento</label>
+            </div>
+            <div class="input-field col s12 m3">
+                <input id="ciudad" type="text" class="validate input-nombre">
+                <label for="ciudad">Valor afiliación</label>
+            </div>
+            <select class="input-field col s12 m3">
+              <option value="" disabled selected>Tipo Precio</option>
+              <option value="1">Zona1</option>
+              <option value="2">Zona2</option>
+            </select>
+          </div>
       </form>
     </div>
   </div>
