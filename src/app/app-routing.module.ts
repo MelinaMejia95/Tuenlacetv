@@ -8,6 +8,7 @@ import { BarriosComponent } from './barrios/barrios.component';
 import { TarifasComponent } from './tarifas/tarifas.component';
 import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'barrios', component: BarriosComponent},
   { path: 'tarifas', component: TarifasComponent},
   { path: 'suscriptores', component: SuscriptoresComponent },
-  { path: 'usuarios', component: UsuariosComponent} 
+  { path: 'usuarios', component: UsuariosComponent},
+  {path: 'empresa', component: EmpresaComponent}
 ];
 
 @NgModule({
