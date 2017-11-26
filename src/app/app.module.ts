@@ -14,6 +14,7 @@ import { TarifasComponent } from './tarifas/tarifas.component';
 import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
 import { NavbarPrincipalComponent } from './navbar-principal/navbar-principal.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     TarifasComponent,
     SuscriptoresComponent,
     NavbarPrincipalComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
