@@ -15,6 +15,9 @@ import { SuscriptoresComponent } from './suscriptores/suscriptores.component';
 import { NavbarPrincipalComponent } from './navbar-principal/navbar-principal.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EmpresaComponent } from './empresa/empresa.component';
+import { FormsModule } from '@angular/forms';
+import { ZonaServicio } from './servicios/zona.servicio';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { EmpresaComponent } from './empresa/empresa.component';
     SuscriptoresComponent,
     NavbarPrincipalComponent,
     UsuariosComponent,
-    EmpresaComponent
+    EmpresaComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { EmpresaComponent } from './empresa/empresa.component';
   }),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ZonaServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
