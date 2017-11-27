@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ZonaServicio } from '../servicios/zona.servicio';
+import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 declare let jQuery: any;
 
@@ -10,11 +13,33 @@ declare let jQuery: any;
 })
 export class ZonasComponent implements OnInit {
 
-  constructor() { }
+  zonas: any[] = []
+  prueba: string
+
+  constructor(private _zonaservicio: ZonaServicio) { }
 
   ngOnInit() {
-    jQuery('select').material_select(); 
+    this._zonaservicio.getZonas().subscribe(data => {
+      this.zonas = data;
+      //console.log(this.zonas[0]);
+
+    });
+    /*this._zonaservicio.buscarZona().subscribe(data => {
+      this.zonas = data;
+      
+    });*/
+    jQuery('select').material_select();
     jQuery('.modal').modal();
+  }
+
+
+  buscar() {
+    console.log(this.prueba);
+    this._zonaservicio.buscarZona(this.prueba).subscribe(data => {
+      this.zonas = data;
+      console.log(data);
+    });
+
   }
 
 }

@@ -16,10 +16,10 @@
               </select>
             </div>
             <div class="input-field col s2">
-              <input id="last_name" type="text" class="validate">
+              <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
             </div>
             <div class="input-field col s2">
-              <a class="waves-effect waves-light btn">Buscar</a>
+              <button (click)="buscar()" class="waves-effect waves-light btn" >Buscar</button>
             </div>
             <div class="input-field col s6" style="width: 347px; margin-left: 301px; margin-top: -72px;">
               <div class="row">
@@ -51,62 +51,27 @@
           </div>
         </div>
         <div class="card-action">
-            <div class="row">
-                <div class="col s12 container-table">
-                  <table class="bordered centered">
-                    <thead>
-                      <tr>
-                        <th>Código</th>
-                        <th>Nombre</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test5" />
-                          <label for="test5">Red</label>
-                        </td>
-                        <td>Eclair</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test6" />
-                          <label for="test6">Red</label>
-                        </td>
-                        <td>Jellybean</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input name="group1" type="radio" id="test7" />
-                          <label for="test7">Red</label>
-                        </td>
-                        <td>Lollipop</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+          <div class="row">
+            <div class="col s12 container-table">
+              <table class="bordered centered">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let zona of zonas'>
+                    <td>
+                      <input name="group1" type="radio" id="test5" />
+                      <label for="test5">{{ zona.id }}</label>
+                    </td>
+                    <td>{{ zona.nombre }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
