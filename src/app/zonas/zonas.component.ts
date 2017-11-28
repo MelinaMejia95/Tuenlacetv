@@ -15,6 +15,8 @@ export class ZonasComponent implements OnInit {
 
   zonas: any[] = []
   prueba: string
+  campo:string
+  campos = [{ key: 'codigo', name: 'Codigo' }, { key: 'nombre', name: 'Nombre' }]
 
   constructor(private _zonaservicio: ZonaServicio) { }
 
@@ -32,10 +34,13 @@ export class ZonasComponent implements OnInit {
     jQuery('.modal').modal();
   }
 
+  pepito(option:string) {
+    this.campo = option;
+  }
 
   buscar() {
-    console.log(this.prueba);
-    this._zonaservicio.buscarZona(this.prueba).subscribe(data => {
+    console.log(this.campo);
+    this._zonaservicio.getZonas(this.campo, this.prueba).subscribe(data => {
       this.zonas = data;
       console.log(data);
     });

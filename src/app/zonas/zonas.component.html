@@ -9,11 +9,11 @@
           <span class="card-title">Zonas</span>
           <div class="row">
             <div class="input-field col s2">
-              <select>
-                <option value="" disabled selected>Buscar por</option>
-                <option value="1">Código</option>
-                <option value="2">Nombre</option>
-              </select>
+              <a class='dropdown-button btn' data-activates='dropdown2'>{{campo || 'Nada'}}</a>
+              <ul id='dropdown2' class='dropdown-content'>
+                <li><a (click)="pepito('codigo')">one</a></li>
+                <li><a (click)="pepito('nombre')">two</a></li>
+              </ul>
             </div>
             <div class="input-field col s2">
               <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">

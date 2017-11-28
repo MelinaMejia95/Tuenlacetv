@@ -41,7 +41,9 @@ import { HttpModule } from '@angular/http';
       confirmButtonClass: 'btn btn-lg btn-primary',
       cancelButtonClass: 'btn btn-lg'
   }),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpModule
   ],
   providers: [ZonaServicio],
   bootstrap: [AppComponent]
