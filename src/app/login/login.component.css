@@ -1,0 +1,56 @@
+.container {
+    background-color: white;
+    width: 700px;
+    border-radius: 2em;
+    margin-top: 80px;
+    padding: 20px;
+  
+}
+
+.login-lenght {
+    padding-left: 100px;
+    padding-right:100px;
+    
+}
+
+.label-login {
+    padding-left: 90px
+}
+
+.deep-container {
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    text-align: center
+}
+
+.img {
+    width: 60px;
+    height: 60px;
+    margin-left: 1px
+}
+
+.img2 {
+    width: 60px;
+    height: 60px;
+    margin-left: 529px
+}
+
+.btn-login {
+    background-color: #00396F
+}
+
+.input-field :focus + label {
+    color: #00396F;
+  }
+
+  .input-field input:focus {
+    border-bottom: 1px solid #00396F;
+    box-shadow: 0 1px 0 0 #00396F;
+  }
+
+  .input-field .prefix.active {
+    color: #00396F;
+  }
+ 

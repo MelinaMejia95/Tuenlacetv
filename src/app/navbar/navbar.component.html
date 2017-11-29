@@ -1,0 +1,110 @@
+<!--<div>
+    <nav class="blue lighten-3 wrapper nav-principal">
+        <div class="nav-wrapper blue lighten-3">
+            <ul id="nav-mobile" class="left hide-on-med-and-down fixed">
+                <li>
+                    <nav class="light-blue lighten-1" role="navigation">
+                        <div class="nav-wrapper container">
+                            <ul class="right hide-on-med-and-down">
+                                
+                                <li>
+                                    <a href="#" data-activates="slide-out" class="button-collapse">
+                                        <i class="material-icons">menu</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </li> 
+            </ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <img class="circle img-user" src="../assets/user.png">
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdown1">User's name
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+</div>-->
+
+<ul id="dropdown1" class="dropdown-content">
+    <li>
+        <a routerLink="/">Salir</a>
+    </li>
+</ul>
+
+<ul id="slide-out" class="side-nav fixed right-nav" style="
+transform: translateX(0%);">
+<li class="brand-logo logo blue lighten-3 text-logo" style="margin-left: 0px; line-height: 53px">Enlace Informático</li>
+    <li>
+        <div class="user-view">
+            <div class="background color-back">
+            </div>
+            <img class="circle img-user user-view-img" src="../assets/user.png">
+            <span class="white-text name">John Doe</span>
+            <span class="white-text email">
+                <i class="material-icons prefix icon">radio_button_checked</i>Online</span>
+        </div>
+    </li>
+    <li>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header blue-text">
+                    <i class="material-icons">filter_drama</i>Maestro</div>
+                <div class="collapsible-body">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <a routerLink="/zonas">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">home</i>Zona
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/barrios">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">location_city</i>Barrio
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/tarifas">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">local_atm</i>Tarifas
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/suscriptores">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">people_outline</i>Suscriptores
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/usuarios">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">person_outline</i>Usuarios
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/empresa">
+                                <div class="collapsible-header blue-text">
+                                    <i class="material-icons prefix">domain</i>Empresa
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+

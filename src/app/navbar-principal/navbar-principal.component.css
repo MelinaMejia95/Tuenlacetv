@@ -1,0 +1,19 @@
+.wrapper {
+    padding-left: 300px;
+    margin-left: 300px;
+    width: 1049px;
+}
+
+.nav-principal {
+    padding-left: 0;
+}
+.nav-principal .nav-wrapper {
+    width: 101.5%;
+} 
+
+.img-user {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    align-content: center
+}

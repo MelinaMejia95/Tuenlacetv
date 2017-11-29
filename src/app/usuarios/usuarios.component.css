@@ -1,0 +1,81 @@
+.cuadro {
+    background-color: white;
+    margin-left: 344px;
+    width: 978px;
+    height: 300px;
+    margin-top: 40px;
+    height: 479px;
+    border-radius: 2em
+    }
+    
+    .label-cuadro { 
+        margin-left: 30px;
+        margin-bottom: 0;
+        padding: 0px
+    }
+    
+    .table-cuadro {
+        padding-top: 100px;
+        width: 800px;
+        margin-left: 80px;
+    }
+    
+    .input-cuadro {
+        width: 948px; 
+        margin-left: 10px
+    }
+    
+    .btn-floating.btn-large {
+        width: 40px;
+        height: 40px
+    }
+    
+    .btn-floating.btn-large i {
+        line-height: 43px;
+    }
+    .row .col.s6 {
+        width: 132px;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+    
+    .input-right {
+        margin-left: 100px;
+    }
+    
+    .button-right {
+        margin-right: 10px;
+        padding: 20px
+    }
+    
+    
+    .modal {
+        width: 500px;
+    }
+    
+    .input-nombre {
+        width: 200px
+    }
+
+   .container-table {
+        max-height: 18rem;
+        overflow-y: scroll; 
+        
+    }
+
+    .card {
+        margin-left: 310px;
+        margin-top: 20px;
+        width: 1026px;
+        height: 530px;
+        margin-bottom: 0
+    }
+    
+    .card .card-content {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 0px;
+        border-radius: 0 0 2px 2px;
+    }
+     

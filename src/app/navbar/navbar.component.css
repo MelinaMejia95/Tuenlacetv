@@ -1,0 +1,69 @@
+.img-user {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    align-content: center
+}
+
+.wrapper {
+    padding-left: 300px;
+    margin-left: 300px;
+    width: 1049px;
+}
+
+.brand-logo {
+    margin-left: 0px;
+    height: 64px
+}
+
+.text-logo {
+    color: white;
+    font-size: 30px;
+    text-align: center
+}
+
+.color-back {
+    background-color: #1976d2 
+}
+
+.user-view {
+    text-align: center;
+}
+
+.user-view-img {
+    margin-left: 87px
+}
+
+.icon {
+    color: greenyellow
+}
+
+.color-coll {
+    background-color: #00396F
+}
+
+.logo {
+    margin-left: 20px
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
+.page-footer {
+    margin-top: 503px;
+    margin-left: 301px;
+    width: 1065px;
+}
+.nav-principal {
+    padding-left: 0;
+}
+.nav-principal .nav-wrapper {
+    width: 101.5%;
+} 
