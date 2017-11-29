@@ -28,13 +28,14 @@ export class ZonasComponent implements OnInit {
     });
     /*this._zonaservicio.buscarZona().subscribe(data => {
       this.zonas = data;
-      
+       
     });*/
     jQuery('select').material_select();
     jQuery('.modal').modal();
+    jQuery('.dropdown-button').dropdown("open");
   }
 
-  pepito(option:string) {
+  capture(option:string) {
     this.campo = option;
   }
 

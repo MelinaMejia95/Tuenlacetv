@@ -1,5 +1,4 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+
 
 <main>
   <div class="row">
@@ -40,8 +39,7 @@
                   </a>
                 </div>
                 <div class="input-field col s1 button-right">
-                  <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el usuario?', 
-                  confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
+                  
                   <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                     <i class="material-icons">delete</i>
                   </a>

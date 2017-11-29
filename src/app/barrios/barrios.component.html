@@ -9,17 +9,17 @@
           <span class="card-title">Barrios</span>
           <div class="row">
             <div class="input-field col s2">
-              <select>
+              <select id="myselect">
                 <option value="" disabled selected>Buscar por</option>
                 <option value="1">Código</option>
                 <option value="2">Nombre</option>
               </select>
             </div>
             <div class="input-field col s2">
-              <input id="last_name" type="text" class="validate">
+              <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
             </div>
             <div class="input-field col s2">
-              <a class="waves-effect waves-light btn">Buscar</a>
+              <a (click)="buscar()" class="waves-effect waves-light btn">Buscar</a>
             </div>
             <div class="input-field col s6" style="width: 347px; margin-left: 301px; margin-top: -72px;">
               <div class="row">

@@ -9,10 +9,10 @@
           <span class="card-title">Zonas</span>
           <div class="row">
             <div class="input-field col s2">
-              <a class='dropdown-button btn' data-activates='dropdown2'>{{campo || 'Nada'}}</a>
+              <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
               <ul id='dropdown2' class='dropdown-content'>
-                <li><a (click)="pepito('codigo')">one</a></li>
-                <li><a (click)="pepito('nombre')">two</a></li>
+                <li><a (click)="capture('codigo')" id="cod">Código</a></li>
+                <li><a (click)="capture('nombre')">Nombre</a></li>
               </ul>
             </div>
             <div class="input-field col s2">
