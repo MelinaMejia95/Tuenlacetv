@@ -27,6 +27,7 @@ export class ZonaServicio{
             return response.json().data || response.json();
         })
     }
+    
 
     crearZonas(contenido: object) {
         const url = `http://localhost:3000/zona/par`;
