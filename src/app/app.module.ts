@@ -17,6 +17,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EmpresaComponent } from './empresa/empresa.component';
 import { FormsModule } from '@angular/forms';
 import { ZonaServicio } from './servicios/zona.servicio';
+import { LoginServicio } from './servicios/login.servicio';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -45,7 +46,7 @@ import { HttpModule } from '@angular/http';
     FormsModule,
     HttpModule
   ],
-  providers: [ZonaServicio],
+  providers: [ZonaServicio, LoginServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

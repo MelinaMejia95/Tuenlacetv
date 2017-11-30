@@ -30,22 +30,33 @@ export class ZonasComponent implements OnInit {
       this.zonas = data;
        
     });*/
-    jQuery('select').material_select();
+    this.inicializarSelect();
     jQuery('.modal').modal();
     jQuery('.dropdown-button').dropdown("open");
   }
 
-  capture(option:string) {
-    this.campo = option;
+  inicializarSelect() {
+    jQuery('#select-filtro').material_select();
+    jQuery('#select-filtro').on('change', () => {
+      this.campo = jQuery('#select-filtro').val();
+    });
   }
 
   buscar() {
-    console.log(this.campo);
-    this._zonaservicio.getZonas(this.campo, this.prueba).subscribe(data => {
+    console.log(this.campo, this.prueba);
+    this._zonaservicio.buscarZonas(this.campo, this.prueba).subscribe(data => {
       this.zonas = data;
-      console.log(data);
     });
 
+  }
+
+  crearZona(nombre) {
+    if (nombre) {
+      this._zonaservicio.crearZonas({'nombre': nombre, 'usuario': localStorage.getItem('usuario')}).subscribe(
+        data => {
+          console.log(data);
+      });
+    }
   }
 
 }

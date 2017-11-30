@@ -10,15 +10,28 @@ export class ZonaServicio{
         console.log("Servicio listo")
      }
     
-    getZonas(campo?:string, valor?:string) {
+    getZonas() {
+        const url = `http://localhost:3000/zones`;
+        return this._http.get(url).map(response =>{
+            return response.json();
+        })
+    }
+
+    buscarZonas(campo?:string, valor?:string) {
         let campoUrl = '';
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://10.100.254.93:3000/zones/${campoUrl}`;
+        const url = `http://localhost:3000/zones/${campoUrl}`;
         return this._http.get(url).map(response =>{
-            console.log(response.json().data);
             return response.json().data || response.json();
         })
+    }
+    
+
+    crearZonas(contenido: object) {
+        const url = `http://localhost:3000/zona/par`;
+        console.log(contenido);
+        return this._http.post(url, contenido).map(response => response.json());
     }
 }

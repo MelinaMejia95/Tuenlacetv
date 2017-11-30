@@ -9,11 +9,16 @@
           <span class="card-title">Zonas</span>
           <div class="row">
             <div class="input-field col s2">
-              <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
+              <!-- <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
               <ul id='dropdown2' class='dropdown-content'>
                 <li><a (click)="capture('codigo')" id="cod">Código</a></li>
                 <li><a (click)="capture('nombre')">Nombre</a></li>
-              </ul>
+              </ul> -->
+              <select name="filtros" id="select-filtro">
+                <option value="" disabled selected>Buscar por</option>
+                <option value="codigo">Código</option>
+                <option value="nombre">Nombre</option>
+              </select>
             </div>
             <div class="input-field col s2">
               <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
@@ -40,11 +45,11 @@
                   </a>
                 </div>
                 <div class="input-field col s1 button-right">
-                  <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el barrio?', 
+                  <!-- <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el barrio?', 
                             confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
                   <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                     <i class="material-icons">delete</i>
-                  </a>
+                  </a> -->
                 </div>
               </div>
             </div>
@@ -191,14 +196,14 @@
           <label for="last_name">Código</label>
         </div>
         <div class="input-field col s12 m6">
-          <input id="nombre" type="text" class="validate input-nombre">
+          <input id="nombre" type="text" class="validate input-nombre" #nombreZona>
           <label for="nombre">Nombre</label>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn">Guardar</a>
+    <a class="waves-effect waves-light btn" (click)="crearZona(nombreZona.value)">Guardar</a>
   </div>
 </div>
 

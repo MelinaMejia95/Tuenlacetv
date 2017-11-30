@@ -5,25 +5,24 @@
     <div class="deep-container">
       <h3>Ingresa</h3>
       <div class="row" ng-app="Alert" >
-      <form class="col s12" method="get">
+      <form class="col s12">
           <div class="row">
             <div class="input-field col s12 login-lenght">
               <i class="material-icons prefix">account_circle</i>
-              <input id="email" type="email" class="validate">
+              <input id="email" type="email" class="validate" #usuario>
               <label for="email" class="label-login">Nombre de usuario</label>
             </div>
-            <div class="row">
               <div class="input-field col s12 login-lenght">
                 <i class="material-icons prefix">vpn_key</i>
-                <input id="password" type="password" class="validate">
+                <input id="password" type="password" class="validate" #password>
                 <label for="password" class="label-login">Contraseña</label>
               </div>
-            </div>
+              <div class="col s12 red-text">{{mensaje}}</div>
           </div>
-          <button class="btn waves-effect waves-light  light-blue darken-3" id="submit" type="submit" name="conectar"
-          [routerLink]="['principal']">Conectar
-            <i class="material-icons right">send</i>
-        </button>
+
+          <button class="btn waves-effect waves-light  light-blue darken-3" type="submit" (click)="conectar(usuario.value, password.value)">
+            Conectar<i class="material-icons right">send</i>
+          </button>
         <!--<button class="btn waves-effect waves-light  light-blue darken-3" id="submit" type="submit" name="conectar"
         [swal]="{ title: 'This is a test'}">Conectar
           <i class="material-icons right">send</i>

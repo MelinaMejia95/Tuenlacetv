@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //import { SweetAlert2Module } from '@toverux/ngsweetalert2';
 import swal from 'sweetalert2';
 import '../../../node_modules/sweetalert2/dist/sweetalert2.css'
+import { LoginServicio } from '../servicios/login.servicio';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,27 @@ import '../../../node_modules/sweetalert2/dist/sweetalert2.css'
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public mensaje: string;
+
+  constructor(private _loginservicio: LoginServicio, private route: Router) { }
 
   ngOnInit() {
+  }
+
+  conectar(nombreusuario, clave) {
+    if (nombreusuario && clave){
+      this._loginservicio.login(nombreusuario, clave).subscribe(data => {
+        this.mensaje = data.message;
+        if (this.mensaje == 'Success'){
+          this.route.navigate(['/principal']);
+          localStorage.setItem('usuario', nombreusuario);
+        }else{
+          console.log(this.mensaje);
+        }
+      });
+    } else {
+      this.mensaje = 'Completa todos los campos';
+    }
   }
 
   message() {
