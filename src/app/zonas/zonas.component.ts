@@ -16,6 +16,7 @@ export class ZonasComponent implements OnInit {
   zonas: any[] = []
   prueba: string
   campo:string
+  zonaEdit: any;
   campos = [{ key: 'codigo', name: 'Codigo' }, { key: 'nombre', name: 'Nombre' }]
 
   constructor(private _zonaservicio: ZonaServicio) { }
@@ -57,6 +58,31 @@ export class ZonasComponent implements OnInit {
           console.log(data);
       });
     }
+  }
+
+  actualizarZona(){
+    if (this.zonaEdit) {
+      this.zonaEdit['usuario'] = localStorage.getItem('usuario');
+      console.log(this.zonaEdit);
+      this._zonaservicio.actualizarZonas(this.zonaEdit).subscribe(
+        data => {
+          console.log(data);
+      });
+    };
+  }
+
+  datoSeleccionado(zona) {
+    this.zonaEdit = zona;
+  }
+
+  deleteZone(){
+    if (this.zonaEdit) {
+      console.log(this.zonaEdit);
+      this._zonaservicio.eliminarZonas(this.zonaEdit.id).subscribe(
+        data => {
+          console.log(data);
+      });
+    };
   }
 
 }
