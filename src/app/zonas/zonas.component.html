@@ -1,90 +1,87 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<app-navbar-principal></app-navbar-principal>
+<!-- <router-outlet></router-outlet> -->
 
-<main>
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card blue lighten-5">
-        <div class="card-content black-text">
-          <span class="card-title">Zonas</span>
-          <div class="row">
-            <div class="input-field col s2">
-              <!-- <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
-              <ul id='dropdown2' class='dropdown-content'>
-                <li><a (click)="capture('codigo')" id="cod">Código</a></li>
-                <li><a (click)="capture('nombre')">Nombre</a></li>
-              </ul> -->
-              <select name="filtros" id="select-filtro">
-                <option value="" disabled selected>Buscar por</option>
-                <option value="codigo">Código</option>
-                <option value="nombre">Nombre</option>
-              </select>
-            </div>
-            <div class="input-field col s2">
-              <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
-            </div>
-            <div class="input-field col s2">
-              <button (click)="buscar()" class="waves-effect waves-light btn" >Buscar</button>
-            </div>
-            <div class="input-field col s6" style="width: 347px; margin-left: 301px; margin-top: -72px;">
-              <div class="row">
-                <div class="input-field col s1 button-right">
-                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal1">
-                    <i class="material-icons">person_add</i>
-                  </a>
-                </div>
-                <div class="input-field col s1 button-right">
-                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal2">
-                    <i class="material-icons">edit</i>
-                  </a>
-                </div>
-                <div class="input-field col s1 button-right">
-                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1  modal-trigger" href="#modal3">
-                    <i class="material-icons">
-                      folder_shared</i>
-                  </a>
-                </div>
-                <div class="input-field col s1 button-right">
-                <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la zona?', 
-                            confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"
-                            (confirm)="deleteZone()"></swal>
-                  <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
-                    <i class="material-icons">delete</i>
-                  </a> 
-                </div>
+<div class="row">
+  <div class="col s12">
+    <div class="card blue lighten-5">
+      <div class="card-content black-text">
+        <span class="card-title">Zonas</span>
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="row">
+              <div class="input-field col s4">
+                <!-- <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
+                <ul id='dropdown2' class='dropdown-content'>
+                  <li><a (click)="capture('codigo')" id="cod">Código</a></li>
+                  <li><a (click)="capture('nombre')">Nombre</a></li>
+                </ul> -->
+                <select name="filtros" id="select-filtro">
+                  <option value="" disabled selected>Buscar por</option>
+                  <option value="codigo">Código</option>
+                  <option value="nombre">Nombre</option>
+                </select>
+              </div>
+              <div class="input-field col s4">
+                <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
+              </div>
+              <div class="input-field col s4">
+                <button (click)="buscar()" class="waves-effect waves-light btn" >Buscar</button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card-action">
-          <div class="row">
-            <div class="col s12 container-table">
-              <table class="bordered centered">
-                <thead>
-                  <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let zona of zonas; let i = index'>
-                    <td>
-                      <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(zona)"/>
-                      <label [attr.for]="'radio_'+i">{{ zona.id }}</label>
-                    </td>
-                    <td>{{ zona.nombre }}</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="col s12 m6">
+            <div class="row">
+              <div class="input-field col s3 m1 button-right">
+                <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal1">
+                  <i class="material-icons">person_add</i>
+                </a>
+              </div>
+              <div class="input-field col s3 m1 button-right">
+                <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal2">
+                  <i class="material-icons">edit</i>
+                </a>
+              </div>
+              <div class="input-field col s3 m1 button-right">
+                <a class="btn-floating btn-large waves-effect waves-light yellow darken-1  modal-trigger" href="#modal3">
+                  <i class="material-icons">
+                    folder_shared</i>
+                </a>
+              </div>
+              <div class="input-field col s3 m1 button-right">
+                <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la zona?', 
+                          confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"
+                          (confirm)="deleteZone()"></swal>
+                <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
+                  <i class="material-icons">delete</i>
+                </a> 
+              </div>
             </div>
+          </div>
+          <div class="col s12 container-table">
+            <table class="bordered centered">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nombre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let zona of zonas; let i = index'>
+                  <td>
+                    <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(zona)"/>
+                    <label [attr.for]="'radio_'+i">{{ zona.id }}</label>
+                  </td>
+                  <td>{{ zona.nombre }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
-</main>
+</div>
 
 <div id="modal1" class="modal">
   <div class="modal-content">

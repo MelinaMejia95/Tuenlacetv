@@ -5,21 +5,16 @@
     align-content: center
 }
 
-.wrapper {
-    padding-left: 300px;
-    margin-left: 300px;
-    width: 1049px;
-}
-
 .brand-logo {
     margin-left: 0px;
-    height: 64px
+    height: 64px;
+    margin-left: 0px;
+    line-height: 53px;
 }
 
-.text-logo {
-    color: white;
-    font-size: 30px;
-    text-align: center
+.brand-logo h4 {
+    margin: 0;
+    padding-top: .8rem;
 }
 
 .color-back {
@@ -41,29 +36,3 @@
 .color-coll {
     background-color: #00396F
 }
-
-.logo {
-    margin-left: 20px
-}
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-      
-.page-footer {
-    margin-top: 503px;
-    margin-left: 301px;
-    width: 1065px;
-}
-.nav-principal {
-    padding-left: 0;
-}
-.nav-principal .nav-wrapper {
-    width: 101.5%;
-} 

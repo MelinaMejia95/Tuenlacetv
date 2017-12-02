@@ -11,7 +11,7 @@ export class LoginServicio{
      }
 
      login(user, clave) {
-        const url = `http://10.100.89.68:3000/users/login/`+user+'/'+clave;
+        const url = `http://localhost:3000/users/login/`+user+'/'+clave;
         return this._http.get(url).map(response =>{
             return response.json();
         })

@@ -5,6 +5,8 @@ import '../../../node_modules/sweetalert2/dist/sweetalert2.css'
 import { LoginServicio } from '../servicios/login.servicio';
 import { Router } from '@angular/router';
 
+declare let jQuery: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,6 +20,11 @@ export class LoginComponent implements OnInit {
   constructor(private _loginservicio: LoginServicio, private route: Router) { }
 
   ngOnInit() {
+    const usuarioExiste =  localStorage.getItem('usuario');
+    if (usuarioExiste) {
+      this.route.navigate(['/zonas']);
+      jQuery('body').css('padding-left', '300px');
+    }
   }
 
   conectar(nombreusuario, clave) {
@@ -26,6 +33,7 @@ export class LoginComponent implements OnInit {
         this.mensaje = data.message;
         if (this.mensaje == 'Success'){
           this.route.navigate(['/principal']);
+          jQuery('body').css('padding-left', '300px');
           localStorage.setItem('usuario', nombreusuario);
         }else{
           console.log(this.mensaje);
