@@ -17,20 +17,16 @@ export class ZonasComponent implements OnInit {
   prueba: string
   campo:string
   zonaEdit: any;
+  usuario:any
   campos = [{ key: 'codigo', name: 'Codigo' }, { key: 'nombre', name: 'Nombre' }]
 
   constructor(private _zonaservicio: ZonaServicio) { }
 
   ngOnInit() {
+    this.usuario = localStorage.getItem('usuario');
     this._zonaservicio.getZonas().subscribe(data => {
       this.zonas = data;
-      //console.log(this.zonas[0]);
-
     });
-    /*this._zonaservicio.buscarZona().subscribe(data => {
-      this.zonas = data;
-       
-    });*/
     this.inicializarSelect();
     jQuery('.modal').modal();
     jQuery('.dropdown-button').dropdown("open");
@@ -44,7 +40,6 @@ export class ZonasComponent implements OnInit {
   }
 
   buscar() {
-    console.log(this.campo, this.prueba);
     this._zonaservicio.buscarZonas(this.campo, this.prueba).subscribe(data => {
       this.zonas = data;
     });
@@ -82,7 +77,7 @@ export class ZonasComponent implements OnInit {
         data => {
           console.log(data);
       });
-    };
+    }; 
   }
 
 }

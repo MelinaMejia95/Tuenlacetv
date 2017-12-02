@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 <app-navbar-principal></app-navbar-principal>
-<!-- <router-outlet></router-outlet> -->
 
 <div class="row">
   <div class="col s12">
@@ -11,11 +10,6 @@
           <div class="col s12 m6">
             <div class="row">
               <div class="input-field col s4">
-                <!-- <a class='dropdown-button btn' data-activates='dropdown2'>Buscar por</a>
-                <ul id='dropdown2' class='dropdown-content'>
-                  <li><a (click)="capture('codigo')" id="cod">Código</a></li>
-                  <li><a (click)="capture('nombre')">Nombre</a></li>
-                </ul> -->
                 <select name="filtros" id="select-filtro">
                   <option value="" disabled selected>Buscar por</option>
                   <option value="codigo">Código</option>
@@ -26,7 +20,7 @@
                 <input type="text" id="valor" [(ngModel)]="prueba" name="prueba">
               </div>
               <div class="input-field col s4">
-                <button (click)="buscar()" class="waves-effect waves-light btn" >Buscar</button>
+                <button (click)="buscar()" class="waves-effect waves-light btn">Buscar</button>
               </div>
             </div>
           </div>
@@ -50,11 +44,10 @@
               </div>
               <div class="input-field col s3 m1 button-right">
                 <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la zona?', 
-                          confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"
-                          (confirm)="deleteZone()"></swal>
+                          confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info" (confirm)="deleteZone()"></swal>
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                   <i class="material-icons">delete</i>
-                </a> 
+                </a>
               </div>
             </div>
           </div>
@@ -69,7 +62,7 @@
               <tbody>
                 <tr *ngFor='let zona of zonas; let i = index'>
                   <td>
-                    <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(zona)"/>
+                    <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(zona)" />
                     <label [attr.for]="'radio_'+i">{{ zona.id }}</label>
                   </td>
                   <td>{{ zona.nombre }}</td>
@@ -100,7 +93,9 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn" (click)="crearZona(nombreZona.value)">Guardar</a>
+      <swal #guardar [options]="{ title: 'Zona guardada con éxito', 
+      confirmButtonText: 'Aceptar'}" type="info"></swal>
+    <a class="waves-effect waves-light btn" (click)="crearZona(nombreZona.value)" (click)="guardar.show()">Guardar</a>
   </div>
 </div>
 
@@ -121,7 +116,9 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn" (click)="actualizarZona()">Guardar</a>
+      <swal #update [options]="{ title: 'Zona actualizada con éxito', 
+      confirmButtonText: 'Aceptar'}" type="info"></swal>
+    <a class="waves-effect waves-light btn" (click)="actualizarZona()" (click)="update.show()">Guardar</a>
   </div>
 </div>
 
@@ -130,12 +127,14 @@
     <h4>Zona</h4>
     <div class="row">
       <form>
-        <div class="row">
-          <div class="input-field col s6">
-            <label>Código: </label>
+        <div class="row" *ngIf="zonaEdit">
+          <div class="input-field col s12 m6">
+            <input id="codigo" type="text" class="validate" disabled [(ngModel)]="zonaEdit.id" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="codigo">Código</label>
           </div>
-          <div class="input-field col s6">
-            <label>Nombre: </label>
+          <div class="input-field col s12 m6">
+            <input id="nombre" type="text" class="validate input-nombre" disabled [(ngModel)]="zonaEdit.nombre" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nombre">Nombre</label>
           </div>
         </div>
       </form>
