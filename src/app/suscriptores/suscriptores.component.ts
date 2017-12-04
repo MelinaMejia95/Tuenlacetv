@@ -205,4 +205,15 @@ export class SuscriptoresComponent implements OnInit {
     }; 
   }
 
+  actualizarPersona() {
+    if (this.susEdit) {
+      this.susEdit['usuario'] = localStorage.getItem('usuario');
+      console.log(this.susEdit);
+      this._suscriptorservicio.actualizarSuscriptor(this.susEdit).subscribe(
+        data => {
+          console.log(data);
+        });
+    };
+  }
+
 }

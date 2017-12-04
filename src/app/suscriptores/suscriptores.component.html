@@ -398,7 +398,7 @@
             </div>
             <div class="input-field col s12 m4">
               <label for="date">Fecha nacimiento</label>
-              <input id="date" type="text" class="datepicker" #fechanac>
+              <input id="date" type="text" class="datepicker" #fechanac [(ngModel)]="susEdit.fechanac" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row">
@@ -421,12 +421,10 @@
               <option value="10" #estrato>10</option>
             </select>
             <div class="input-field col s12 m4">
-                <swal #guardarSus [options]="{ title: 'Suscriptor guardado con éxito', 
+                <swal #guardarSus [options]="{ title: 'Suscriptor actualizado con éxito', 
                 confirmButtonText: 'Aceptar'}" type="info"></swal>
               <a class="waves-effect waves-light btn" style="margin-left: 9rem;"
-               (click)="guardarPersona(entidad.value, nit.value, nombre1.value, nombre2.value, apellido1.value,
-               apellido2.value, direccion.value, tel1.value, tel2.value, correo.value, fechanac.value,
-               persona.value, estrato.value)"
+               (click)="actualizarPersona()"
                (click)="guardarSus.show()">Guardar</a>
             </div>
           </div>
@@ -562,129 +560,95 @@
     <h4>Suscriptor</h4>
     <div class="row">
       <form class="col s12">
-        <div class="row">
+        <div class="row" *ngIf="susEdit">
           <div class="input-field col s12 m3">
-            <label>Código: </label>
+            <input id="codigo" disabled type="text" class="validate" #codigo [(ngModel)]="susEdit.id" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="codigo">Código</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Tipo Entidad: </label>
+            <input id="entidad" disabled type="text" class="validate" #codigo [(ngModel)]="susEdit.id" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="entidad">Tipo Entidad</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>NIT: </label>
+            <input id="doc" disabled type="text" class="validate" #codigo [(ngModel)]="susEdit.type_document" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="doc">Tipo Documento</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Número contacto: </label>
+            <input id="nit" type="text" class="validate" #nit [(ngModel)]="susEdit.documento" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nit">NIT</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m3">
+            <input id="primer_nombre" type="text" class="validate" #nombre1 [(ngModel)]="susEdit.nombre1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="primer_nombre">Primer Nombre</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="segundo_nombre" type="text" class="validate input-nombre" #nombre2 [(ngModel)]="susEdit.nombre2" [ngModelOptions]="{standalone: true}">
+            <label for="segundo_nombre">Segundo Nombre</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="primer_ape" type="text" class="validate input-nombre" #apellido1 [(ngModel)]="susEdit.apellido1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="primer_ape">Primer Apellido</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="segundo_ape" type="text" class="validate input-nombre" #apellido2 [(ngModel)]="susEdit.apellido2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="segundo_ape">Segundo Apellido</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m3">
+            <input id="dir" type="text" class="validate input-nombre" #direccion [(ngModel)]="susEdit.direccion" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="dir">Dirección</label>
+          </div>
+          <select class="input-field col s12 m3" id="select3">
+            <option value="" disabled selected>Barrio</option>
+            <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
+          </select>
+
+          <select class="input-field col s12 m3" id="select4"> 
+            <option value="" disabled selected>Zona</option>
+            <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <input id="tel_casa" type="text" class="validate" #tel1 [(ngModel)]="susEdit.telefono1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel_casa">Teléfono casa</label>
+          </div>
+        </div>
+        <div class="row"  *ngIf="susEdit">
+          <div class="input-field col s12 m4">
+            <input id="tel_movil" type="text" class="validate input-nombre" #tel2 [(ngModel)]="susEdit.telefono2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel_movil">Teléfono móvil</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input id="email" type="email" class="validate" #correo [(ngModel)]="susEdit.correo" [ngModelOptions]="{standalone: true}">
+            <label for="email">Correo</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <label for="date">Fecha nacimiento</label>
+            <input id="date" type="text" class="datepicker" #fechanac [(ngModel)]="susEdit.fechanac" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Primer Nombre: </label>
+          <select class="input-field col s12 m3" id="select5">
+            <option value="" disabled selected>Tipo Persona</option>
+            <option value="N" #persona>Natural</option>
+            <option value="J" #persona>Jurídica</option>
+          </select>
+          <select class="input-field col s12 m3" id="select6">
+            <option value="" disabled selected>Estrato</option>
+            <option value="1" #estrato>1</option>
+            <option value="2" #estrato>2</option>
+            <option value="3" #estrato>3</option>
+            <option value="4" #estrato>4</option>
+            <option value="5" #estrato>5</option>
+            <option value="6" #estrato>6</option>
+            <option value="7" #estrato>7</option>
+            <option value="8" #estrato>8</option>
+            <option value="9" #estrato>9</option>
+            <option value="10" #estrato>10</option>
+          </select>
           </div>
-          <div class="input-field col s12 m3">
-            <label>Segundo Nombre: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Primer Apellido: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Segundo Apellido: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Teléfono casa: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Teléfono movil: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Dirección: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Dirección correspondencia: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Barrio: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Zona: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Ciudad: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Fecha nacimiento: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Correo: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Tipo persona: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Vendedor: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Fecha afiliación: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Tarifa: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Valor descuento: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Valor afiliación: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Tipo precio: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Estrato: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Contacto: </label>
-          </div>
-          <div class="input-field col s12 m6">
-            <label>Observaciones: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>Tipo factura: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Estado físico: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Técnico: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Tipo Televisión: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <label>N.Decodificación: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Saldo cliente: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Estado: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Último pago: </label>
-          </div>
-        </div>
       </form>
     </div>
   </div>
