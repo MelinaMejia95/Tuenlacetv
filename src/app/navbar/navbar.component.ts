@@ -9,12 +9,15 @@ declare let jQuery: any;
 })
 export class NavbarComponent implements OnInit {
 
+  public usuario: string;
+
   constructor() { }
 
   ngOnInit() {
     jQuery(".button-collapse").sideNav();
     jQuery(".collapsible").collapsible();
     jQuery(".dropdown-button").dropdown("open");
+    this.usuario = localStorage.getItem('usuario');
   }
  
 }

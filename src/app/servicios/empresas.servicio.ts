@@ -5,44 +5,45 @@ import 'rxjs/add/operator/map';
 @Injectable (
 
 )
-export class ZonaServicio{
+export class EmpresaServicio{
+    
     constructor(private _http:Http){
         console.log("Servicio listo")
      }
     
-    getZonas() {
-        const url = `http://localhost:3000/zones`;
+    getEmpresa() {
+        const url = `http://localhost:3000/companies`;
         return this._http.get(url).map(response =>{
             return response.json();
         })
     }
 
-    buscarZonas(campo?:string, valor?:string) {
+    buscarEmpresa(campo?:string, valor?:string) {
         let campoUrl = '';
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://localhost:3000/zones/${campoUrl}`;
+        const url = `http://localhost:3000/companies/${campoUrl}`;
         return this._http.get(url).map(response =>{
             return response.json().data || response.json();
         })
     }
     
 
-    crearZonas(contenido: object) {
-        const url = `http://localhost:3000/zones`;
+    crearEmpresa(contenido: object) {
+        const url = `http://localhost:3000/companies`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
-    actualizarZonas(contenido: object) {
-        const url = 'http://localhost:3000/zones/' + contenido['id'];
+    actualizarEmpresa(contenido: object) {
+        const url = 'http://localhost:3000/companies/' + contenido['id'];
         console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
-    eliminarZonas(codigo: string){
-        const url = 'http://localhost:3000/zones/' + codigo;
+    eliminarEmpresa(codigo: string){
+        const url = 'http://localhost:3000/companies/' + codigo;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     const usuarioExiste =  localStorage.getItem('usuario');
+    jQuery('body').css('padding-left', '0');
     if (usuarioExiste) {
       this.route.navigate(['/zonas']);
       jQuery('body').css('padding-left', '300px');

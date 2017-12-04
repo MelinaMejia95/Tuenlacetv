@@ -2,52 +2,56 @@
 <app-navbar-principal></app-navbar-principal>
 
 <div class="row">
-  <div class="col s12 m6">
+  <div class="col s12">
     <div class="card blue lighten-5">
       <div class="card-content black-text">
         <span class="card-title">Suscriptores</span>
         <div class="row">
-          <div class="input-field col s2">
-            <select name="filtros" id="select-filtro">
-              <option value="" disabled selected>Buscar por</option>
-              <option value="codigo">Código</option>
-              <option value="documento">NIT</option>
-              <option value="direccion">Dirección</option>
-              <option value="nombre1">Primer Nombre</option>
-              <option value="nombre2">Segundo Nombre</option>
-              <option value="apellido1">Primer Apellido</option>
-              <option value="apellido2">Segundo Apellido</option>
-              <option value="zona">Código Zona</option>
-              <option value="barrio">Código Barrio</option>
-              <option value="telefono1">Teléfono 1</option>
-              <option value="estado">Estado</option>
-            </select>
-          </div>
-          <div class="input-field col s2" style="width:130px">
-            <input id="last_name" type="text" class="validate" [(ngModel)]="prueba" name="prueba">
-          </div>
-          <div class="input-field col s2">
-            <a class="waves-effect waves-light btn" (click)="buscar()">Buscar</a>
-          </div>
-          <div class="input-field col s6" style=" width: 347px;margin-left: 166px;margin-top: -21px;">
+          <div class="col s12 m6">
             <div class="row">
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m4">
+                <select name="filtros" id="select-filtro">
+                  <option value="" disabled selected>Buscar por</option>
+                  <option value="codigo">Código</option>
+                  <option value="documento">NIT</option>
+                  <option value="direccion">Dirección</option>
+                  <option value="nombre1">Primer Nombre</option>
+                  <option value="nombre2">Segundo Nombre</option>
+                  <option value="apellido1">Primer Apellido</option>
+                  <option value="apellido2">Segundo Apellido</option>
+                  <option value="zona">Código Zona</option>
+                  <option value="barrio">Código Barrio</option>
+                  <option value="telefono1">Teléfono 1</option>
+                  <option value="estado">Estado</option>
+                </select>
+              </div>
+              <div class="input-field col s12 m4">
+                <input id="last_name" type="text" class="validate" [(ngModel)]="prueba" name="prueba">
+              </div>
+              <div class="input-field col s12 m4">
+                <a class="waves-effect waves-light btn" (click)="buscar()">Buscar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="row">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal1">
                   <i class="material-icons">person_add</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal2">
                   <i class="material-icons">edit</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1  modal-trigger" href="#modal3">
                   <i class="material-icons">
                     folder_shared</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar el suscriptor?', 
                       confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="deleteSuscriptor()" (click)="dialog.show()">
@@ -57,7 +61,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="card-action">
         <div class="row">
@@ -150,7 +153,7 @@
             <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
           </select>
 
-          <select class="input-field col s12 m3" id="select4"> 
+          <select class="input-field col s12 m3" id="select4">
             <option value="" disabled selected>Zona</option>
             <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
           </select>
@@ -179,6 +182,236 @@
             <option value="N" #persona>Natural</option>
             <option value="J" #persona>Jurídica</option>
           </select>
+          <select class="input-field col s12 m3" id="select6" #estrato1>
+            <option value="" disabled selected>Estrato</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div class="input-field col s12 m4">
+            <swal #guardarSus [options]="{ title: 'Suscriptor guardado con éxito', 
+              confirmButtonText: 'Aceptar'}" type="info"></swal>
+            <a class="waves-effect waves-light btn" style="margin-left: 9rem;" (click)="guardarPersona(entidad.value, nit.value, nombre1.value, nombre2.value, apellido1.value,
+             apellido2.value, dir.value, tel1.value, tel2.value, correo.value, fechanac.value,
+             persona.value, estrato1.value)" (click)="guardarSus.show()">Guardar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <form>
+        <h5>Señal</h5>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="contrato" type="text" class="validate input-nombre" #contrato>
+            <label for="contrato">Contrato</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="dir" type="text" class="validate input-nombre" #direccion>
+            <label for="dir">Dirección</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="urb" type="text" class="validate input-nombre" #urb>
+            <label for="urb">Urbanización</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="torre" type="text" class="validate input-nombre" #torre>
+            <label for="torre">Torre</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="apto" type="text" class="validate input-nombre" #apto>
+            <label for="apto">Apartamento</label>
+          </div>
+          <select class="input-field col s12 m3" id="select7" #estrato>
+            <option value="" disabled selected>Estrato</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <select class="input-field col s12 m3" id="select8" #vivienda>
+            <option value="" disabled selected>Vivienda</option>
+            <option value="P">Propia</option>
+            <option value="A">Alquilada</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <input id="tel_casa" type="text" class="validate input-nombre" #telcasa>
+            <label for="tel_casa">Teléfono casa</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="tel_movil" type="text" class="validate input-nombre" #telmovil>
+            <label for="tel_movil">Teléfono móvil</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="contacto" type="text" class="validate input-nombre" #contacto>
+            <label for="contacto">Contacto</label>
+          </div>
+          <select class="input-field col s12 m3" id="select9">
+            <option value="" disabled selected>Barrio</option>
+            <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
+          </select>
+          <select class="input-field col s12 m3" id="select10">
+            <option value="" disabled selected>Zona</option>
+            <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <label for="date">Fecha contrato</label>
+            <input id="date" type="text" class="datepicker" #fechacon>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="num_tvs" type="text" class="validate input-nombre" #num>
+            <label for="num_tvs">Número tvs</label>
+          </div>
+          <select class="input-field col s12 m3" id="select11" #estado>
+            <option value="" disabled selected>Estado</option>
+            <option value="A">A</option>
+            <option value="P">P</option>
+          </select>
+          <select class="input-field col s12 m3" id="select12">
+            <option value="" disabled selected>Tarifa</option>
+            <option [value]="tarifa.id" *ngFor="let tarifa of tarifas">{{ tarifa.valor }}</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="precinto" type="text" class="validate input-nombre" #precinto>
+            <label for="precinto">Precinto</label>
+          </div>
+          <select class="input-field col s12 m3" id="select13">
+            <option value="" disabled selected>Tipo instalación</option>
+            <option [value]="inst.id" *ngFor="let inst of instalacion">{{ inst.nombre }}</option>
+          </select>
+          <select class="input-field col s12 m3" id="select14">
+            <option value="" disabled selected>Tecnología</option>
+            <option [value]="tecnologia.id" *ngFor="let tecnologia of tecnologias">{{ tecnologia.nombre }}</option>
+          </select>
+          <select class="input-field col s12 m3" id="select15" #tiposerv>
+            <option value="" disabled selected>Tipo Servicio</option>
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+          </select>
+        </div>
+        <div class="row">
+          <select class="input-field col s12 m3" id="select16" #area>
+            <option value="" disabled selected>Área instalación</option>
+            <option value="urbana">Urbana</option>
+            <option value="rural">Rural</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <swal #guardarSenal [options]="{ title: 'Señal guardada con éxito', 
+              confirmButtonText: 'Aceptar'}" type="info"></swal>
+            <a class="waves-effect waves-light btn" style="margin-left: 18rem;" (click)="guardarSe(contrato.value, direccion.value, urb.value, torre.value, apto.value,
+            estrato.value, vivienda.value, telcasa.value, telmovil.value, contacto.value, fechacon.value,
+            num.value, estado.value, precinto.value, tiposerv.value, area.value)" (click)="guardarSenal.show()">Guardar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+<div id="modal2" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Actualizar Suscriptor</h4>
+    <div class="row">
+      <form>
+        <h5>Persona</h5>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m3">
+            <input id="codigo" disabled type="text" class="validate" #codigo [(ngModel)]="susEdit.id" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="codigo">Código</label>
+          </div>
+          <select class="input-field col s12 m3" id="select1">
+            <option value="" disabled selected>Tipo Entidad</option>
+            <option value="1" #entidad>Suscriptor</option>
+          </select>
+          <select class="input-field col s12 m3" id="select2">
+            <option value="" disabled selected>Tipo Documento</option>
+            <option [value]="documento.id" *ngFor="let documento of documentos">{{ documento.nombre }}</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <input id="nit" type="text" class="validate" #nit [(ngModel)]="susEdit.documento" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nit">NIT</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m3">
+            <input id="primer_nombre" type="text" class="validate" #nombre1 [(ngModel)]="susEdit.nombre1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="primer_nombre">Primer Nombre</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="segundo_nombre" type="text" class="validate input-nombre" #nombre2 [(ngModel)]="susEdit.nombre2" [ngModelOptions]="{standalone: true}">
+            <label for="segundo_nombre">Segundo Nombre</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="primer_ape" type="text" class="validate input-nombre" #apellido1 [(ngModel)]="susEdit.apellido1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="primer_ape">Primer Apellido</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="segundo_ape" type="text" class="validate input-nombre" #apellido2 [(ngModel)]="susEdit.apellido2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="segundo_ape">Segundo Apellido</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m3">
+            <input id="dir" type="text" class="validate input-nombre" #direccion [(ngModel)]="susEdit.direccion" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="dir">Dirección</label>
+          </div>
+          <select class="input-field col s12 m3" id="select3">
+            <option value="" disabled selected>Barrio</option>
+            <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
+          </select>
+
+          <select class="input-field col s12 m3" id="select4">
+            <option value="" disabled selected>Zona</option>
+            <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
+          </select>
+          <div class="input-field col s12 m3">
+            <input id="tel_casa" type="text" class="validate" #tel1 [(ngModel)]="susEdit.telefono1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel_casa">Teléfono casa</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="susEdit">
+          <div class="input-field col s12 m4">
+            <input id="tel_movil" type="text" class="validate input-nombre" #tel2 [(ngModel)]="susEdit.telefono2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel_movil">Teléfono móvil</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input id="email" type="email" class="validate" #correo [(ngModel)]="susEdit.correo" [ngModelOptions]="{standalone: true}">
+            <label for="email">Correo</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <label for="date">Fecha nacimiento</label>
+            <input id="date" type="text" class="datepicker" #fechanac [(ngModel)]="susEdit.fechanac" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="row">
+          <select class="input-field col s12 m3" id="select5">
+            <option value="" disabled selected>Tipo Persona</option>
+            <option value="N" #persona>Natural</option>
+            <option value="J" #persona>Jurídica</option>
+          </select>
           <select class="input-field col s12 m3" id="select6">
             <option value="" disabled selected>Estrato</option>
             <option value="1" #estrato>1</option>
@@ -193,13 +426,9 @@
             <option value="10" #estrato>10</option>
           </select>
           <div class="input-field col s12 m4">
-              <swal #guardarSus [options]="{ title: 'Suscriptor guardado con éxito', 
-              confirmButtonText: 'Aceptar'}" type="info"></swal>
-            <a class="waves-effect waves-light btn" style="margin-left: 9rem;"
-             (click)="guardarPersona(entidad.value, nit.value, nombre1.value, nombre2.value, apellido1.value,
-             apellido2.value, dir.value, tel1.value, tel2.value, correo.value, fechanac.value,
-             persona.value, estrato.value)"
-             (click)="guardarSus.show()">Guardar</a>
+            <swal #guardarSus [options]="{ title: 'Suscriptor actualizado con éxito', 
+                confirmButtonText: 'Aceptar'}" type="info"></swal>
+            <a class="waves-effect waves-light btn" style="margin-left: 9rem;" (click)="actualizarPersona()" (click)="guardarSus.show()">Guardar</a>
           </div>
         </div>
         <h5>Señal</h5>
@@ -226,7 +455,7 @@
             <input id="apto" type="text" class="validate input-nombre" #apto>
             <label for="apto">Apartamento</label>
           </div>
-          <select class="input-field col s12 m3"  id="select7">
+          <select class="input-field col s12 m3" id="select7">
             <option value="" disabled selected>Estrato</option>
             <option value="1" #estrato>1</option>
             <option value="2" #estrato>2</option>
@@ -239,7 +468,7 @@
             <option value="9" #estrato>9</option>
             <option value="10" #estrato>10</option>
           </select>
-          <select class="input-field col s12 m3"  id="select8">
+          <select class="input-field col s12 m3" id="select8">
             <option value="" disabled selected>Vivienda</option>
             <option value="P" #vivienda>Propia</option>
             <option value="A" #vivienda>Alquilada</option>
@@ -258,11 +487,11 @@
             <input id="contacto" type="text" class="validate input-nombre" #contacto>
             <label for="contacto">Contacto</label>
           </div>
-          <select class="input-field col s12 m3"  id="select9">
+          <select class="input-field col s12 m3" id="select9">
             <option value="" disabled selected>Barrio</option>
             <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
           </select>
-          <select class="input-field col s12 m3"  id="select10">
+          <select class="input-field col s12 m3" id="select10">
             <option value="" disabled selected>Zona</option>
             <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
           </select>
@@ -276,12 +505,12 @@
             <input id="num_tvs" type="text" class="validate input-nombre" #num>
             <label for="num_tvs">Número tvs</label>
           </div>
-          <select class="input-field col s12 m3"  id="select11">
-              <option value="" disabled selected>Estado</option>
-              <option value="A" #estado>A</option>
-              <option value="P" #estado>P</option>
-            </select>
-          <select class="input-field col s12 m3"  id="select12">
+          <select class="input-field col s12 m3" id="select11">
+            <option value="" disabled selected>Estado</option>
+            <option value="A" #estado>A</option>
+            <option value="P" #estado>P</option>
+          </select>
+          <select class="input-field col s12 m3" id="select12">
             <option value="" disabled selected>Tarifa</option>
             <option [value]="tarifa.id" *ngFor="let tarifa of tarifas">{{ tarifa.valor }}</option>
           </select>
@@ -291,262 +520,34 @@
             <input id="precinto" type="text" class="validate input-nombre" #precinto>
             <label for="precinto">Precinto</label>
           </div>
-          <select class="input-field col s12 m3"  id="select13">
+          <select class="input-field col s12 m3" id="select13">
             <option value="" disabled selected>Tipo instalación</option>
             <option [value]="inst.id" *ngFor="let inst of instalacion">{{ inst.nombre }}</option>
           </select>
-          <select class="input-field col s12 m3"  id="select14">
+          <select class="input-field col s12 m3" id="select14">
             <option value="" disabled selected>Tecnología</option>
             <option [value]="tecnologia.id" *ngFor="let tecnologia of tecnologias">{{ tecnologia.nombre }}</option>
           </select>
-          <select class="input-field col s12 m3"  id="select15">
+          <select class="input-field col s12 m3" id="select15">
             <option value="" disabled selected>Tipo Servicio</option>
             <option value="residencial" #tiposerv>Residencial</option>
             <option value="comercial" #tiposerv>Comercial</option>
           </select>
         </div>
         <div class="row">
-          <select class="input-field col s12 m3"  id="select16">
+          <select class="input-field col s12 m3" id="select16">
             <option value="" disabled selected>Área instalación</option>
             <option value="urbana" #area>Urbana</option>
             <option value="rural" #area>Rural</option>
           </select>
           <div class="input-field col s12 m3">
-              <swal #guardarSenal [options]="{ title: 'Señal guardada con éxito', 
-              confirmButtonText: 'Aceptar'}" type="info"></swal>
-            <a class="waves-effect waves-light btn" style="margin-left: 18rem;" 
-            (click)="guardarSe(contrato.value, direccion.value, urb.value, torre.value, apto.value,
-            estrato.value, vivienda.value, telcasa.value, telmovil.value, contacto.value, fechacon.value,
-            num.value, estado.value, precinto.value, tiposerv.value, area.value)"
-            (click)="guardarSenal.show()">Guardar</a>
+            <swal #guardarSenal [options]="{ title: 'Señal guardada con éxito', 
+                confirmButtonText: 'Aceptar'}" type="info"></swal>
+            <a class="waves-effect waves-light btn" style="margin-left: 18rem;" (click)="guardarSe(contrato.value, direccion.value, urb.value, torre.value, apto.value,
+              estrato.value, vivienda.value, telcasa.value, telmovil.value, contacto.value, fechacon.value,
+              num.value, estado.value, precinto.value, tiposerv.value, area.value)" (click)="guardarSenal.show()">Guardar</a>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div id="modal2" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>Actualizar Suscriptor</h4>
-    <div class="row">
-      <form>
-          <h5>Persona</h5>
-          <div class="row" *ngIf="susEdit">
-            <div class="input-field col s12 m3">
-              <input id="codigo" disabled type="text" class="validate" #codigo [(ngModel)]="susEdit.id" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="codigo">Código</label>
-            </div>
-            <select class="input-field col s12 m3" id="select1">
-              <option value="" disabled selected>Tipo Entidad</option>
-              <option value="1" #entidad>Suscriptor</option>
-            </select>
-            <select class="input-field col s12 m3" id="select2">
-              <option value="" disabled selected>Tipo Documento</option>
-              <option [value]="documento.id" *ngFor="let documento of documentos">{{ documento.nombre }}</option>
-            </select>
-            <div class="input-field col s12 m3">
-              <input id="nit" type="text" class="validate" #nit [(ngModel)]="susEdit.documento" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="nit">NIT</label>
-            </div>
-          </div>
-          <div class="row" *ngIf="susEdit">
-            <div class="input-field col s12 m3">
-              <input id="primer_nombre" type="text" class="validate" #nombre1 [(ngModel)]="susEdit.nombre1" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="primer_nombre">Primer Nombre</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="segundo_nombre" type="text" class="validate input-nombre" #nombre2 [(ngModel)]="susEdit.nombre2" [ngModelOptions]="{standalone: true}">
-              <label for="segundo_nombre">Segundo Nombre</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="primer_ape" type="text" class="validate input-nombre" #apellido1 [(ngModel)]="susEdit.apellido1" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="primer_ape">Primer Apellido</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="segundo_ape" type="text" class="validate input-nombre" #apellido2 [(ngModel)]="susEdit.apellido2" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="segundo_ape">Segundo Apellido</label>
-            </div>
-          </div>
-          <div class="row" *ngIf="susEdit">
-            <div class="input-field col s12 m3">
-              <input id="dir" type="text" class="validate input-nombre" #direccion [(ngModel)]="susEdit.direccion" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="dir">Dirección</label>
-            </div>
-            <select class="input-field col s12 m3" id="select3">
-              <option value="" disabled selected>Barrio</option>
-              <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
-            </select>
-  
-            <select class="input-field col s12 m3" id="select4"> 
-              <option value="" disabled selected>Zona</option>
-              <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
-            </select>
-            <div class="input-field col s12 m3">
-              <input id="tel_casa" type="text" class="validate" #tel1 [(ngModel)]="susEdit.telefono1" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="tel_casa">Teléfono casa</label>
-            </div>
-          </div>
-          <div class="row"  *ngIf="susEdit">
-            <div class="input-field col s12 m4">
-              <input id="tel_movil" type="text" class="validate input-nombre" #tel2 [(ngModel)]="susEdit.telefono2" [ngModelOptions]="{standalone: true}">
-              <label class="active" for="tel_movil">Teléfono móvil</label>
-            </div>
-            <div class="input-field col s12 m4">
-              <input id="email" type="email" class="validate" #correo [(ngModel)]="susEdit.correo" [ngModelOptions]="{standalone: true}">
-              <label for="email">Correo</label>
-            </div>
-            <div class="input-field col s12 m4">
-              <label for="date">Fecha nacimiento</label>
-              <input id="date" type="text" class="datepicker" #fechanac [(ngModel)]="susEdit.fechanac" [ngModelOptions]="{standalone: true}">
-            </div>
-          </div>
-          <div class="row">
-            <select class="input-field col s12 m3" id="select5">
-              <option value="" disabled selected>Tipo Persona</option>
-              <option value="N" #persona>Natural</option>
-              <option value="J" #persona>Jurídica</option>
-            </select>
-            <select class="input-field col s12 m3" id="select6">
-              <option value="" disabled selected>Estrato</option>
-              <option value="1" #estrato>1</option>
-              <option value="2" #estrato>2</option>
-              <option value="3" #estrato>3</option>
-              <option value="4" #estrato>4</option>
-              <option value="5" #estrato>5</option>
-              <option value="6" #estrato>6</option>
-              <option value="7" #estrato>7</option>
-              <option value="8" #estrato>8</option>
-              <option value="9" #estrato>9</option>
-              <option value="10" #estrato>10</option>
-            </select>
-            <div class="input-field col s12 m4">
-                <swal #guardarSus [options]="{ title: 'Suscriptor actualizado con éxito', 
-                confirmButtonText: 'Aceptar'}" type="info"></swal>
-              <a class="waves-effect waves-light btn" style="margin-left: 9rem;"
-               (click)="actualizarPersona()"
-               (click)="guardarSus.show()">Guardar</a>
-            </div>
-          </div>
-          <h5>Señal</h5>
-          <div class="row">
-            <div class="input-field col s12 m3">
-              <input id="contrato" type="text" class="validate input-nombre" #contrato>
-              <label for="contrato">Contrato</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="dir" type="text" class="validate input-nombre" #direccion>
-              <label for="dir">Dirección</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="urb" type="text" class="validate input-nombre" #urb>
-              <label for="urb">Urbanización</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="torre" type="text" class="validate input-nombre" #torre>
-              <label for="torre">Torre</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m3">
-              <input id="apto" type="text" class="validate input-nombre" #apto>
-              <label for="apto">Apartamento</label>
-            </div>
-            <select class="input-field col s12 m3"  id="select7">
-              <option value="" disabled selected>Estrato</option>
-              <option value="1" #estrato>1</option>
-              <option value="2" #estrato>2</option>
-              <option value="3" #estrato>3</option>
-              <option value="4" #estrato>4</option>
-              <option value="5" #estrato>5</option>
-              <option value="6" #estrato>6</option>
-              <option value="7" #estrato>7</option>
-              <option value="8" #estrato>8</option>
-              <option value="9" #estrato>9</option>
-              <option value="10" #estrato>10</option>
-            </select>
-            <select class="input-field col s12 m3"  id="select8">
-              <option value="" disabled selected>Vivienda</option>
-              <option value="P" #vivienda>Propia</option>
-              <option value="A" #vivienda>Alquilada</option>
-            </select>
-            <div class="input-field col s12 m3">
-              <input id="tel_casa" type="text" class="validate input-nombre" #telcasa>
-              <label for="tel_casa">Teléfono casa</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m3">
-              <input id="tel_movil" type="text" class="validate input-nombre" #telmovil>
-              <label for="tel_movil">Teléfono móvil</label>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="contacto" type="text" class="validate input-nombre" #contacto>
-              <label for="contacto">Contacto</label>
-            </div>
-            <select class="input-field col s12 m3"  id="select9">
-              <option value="" disabled selected>Barrio</option>
-              <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
-            </select>
-            <select class="input-field col s12 m3"  id="select10">
-              <option value="" disabled selected>Zona</option>
-              <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
-            </select>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m3">
-              <label for="date">Fecha contrato</label>
-              <input id="date" type="text" class="datepicker" #fechacon>
-            </div>
-            <div class="input-field col s12 m3">
-              <input id="num_tvs" type="text" class="validate input-nombre" #num>
-              <label for="num_tvs">Número tvs</label>
-            </div>
-            <select class="input-field col s12 m3"  id="select11">
-                <option value="" disabled selected>Estado</option>
-                <option value="A" #estado>A</option>
-                <option value="P" #estado>P</option>
-              </select>
-            <select class="input-field col s12 m3"  id="select12">
-              <option value="" disabled selected>Tarifa</option>
-              <option [value]="tarifa.id" *ngFor="let tarifa of tarifas">{{ tarifa.valor }}</option>
-            </select>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m3">
-              <input id="precinto" type="text" class="validate input-nombre" #precinto>
-              <label for="precinto">Precinto</label>
-            </div>
-            <select class="input-field col s12 m3"  id="select13">
-              <option value="" disabled selected>Tipo instalación</option>
-              <option [value]="inst.id" *ngFor="let inst of instalacion">{{ inst.nombre }}</option>
-            </select>
-            <select class="input-field col s12 m3"  id="select14">
-              <option value="" disabled selected>Tecnología</option>
-              <option [value]="tecnologia.id" *ngFor="let tecnologia of tecnologias">{{ tecnologia.nombre }}</option>
-            </select>
-            <select class="input-field col s12 m3"  id="select15">
-              <option value="" disabled selected>Tipo Servicio</option>
-              <option value="residencial" #tiposerv>Residencial</option>
-              <option value="comercial" #tiposerv>Comercial</option>
-            </select>
-          </div>
-          <div class="row">
-            <select class="input-field col s12 m3"  id="select16">
-              <option value="" disabled selected>Área instalación</option>
-              <option value="urbana" #area>Urbana</option>
-              <option value="rural" #area>Rural</option>
-            </select>
-            <div class="input-field col s12 m3">
-                <swal #guardarSenal [options]="{ title: 'Señal guardada con éxito', 
-                confirmButtonText: 'Aceptar'}" type="info"></swal>
-              <a class="waves-effect waves-light btn" style="margin-left: 18rem;" 
-              (click)="guardarSe(contrato.value, direccion.value, urb.value, torre.value, apto.value,
-              estrato.value, vivienda.value, telcasa.value, telmovil.value, contacto.value, fechacon.value,
-              num.value, estado.value, precinto.value, tiposerv.value, area.value)"
-              (click)="guardarSenal.show()">Guardar</a>
-            </div>
-          </div>
       </form>
     </div>
   </div>
@@ -606,7 +607,7 @@
             <option [value]="barrio.id" *ngFor="let barrio of barrios">{{ barrio.nombre }}</option>
           </select>
 
-          <select class="input-field col s12 m3" id="select4"> 
+          <select class="input-field col s12 m3" id="select4">
             <option value="" disabled selected>Zona</option>
             <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
           </select>
@@ -615,7 +616,7 @@
             <label class="active" for="tel_casa">Teléfono casa</label>
           </div>
         </div>
-        <div class="row"  *ngIf="susEdit">
+        <div class="row" *ngIf="susEdit">
           <div class="input-field col s12 m4">
             <input id="tel_movil" type="text" class="validate input-nombre" #tel2 [(ngModel)]="susEdit.telefono2" [ngModelOptions]="{standalone: true}">
             <label class="active" for="tel_movil">Teléfono móvil</label>
@@ -648,7 +649,7 @@
             <option value="9" #estrato>9</option>
             <option value="10" #estrato>10</option>
           </select>
-          </div>
+        </div>
       </form>
     </div>
   </div>

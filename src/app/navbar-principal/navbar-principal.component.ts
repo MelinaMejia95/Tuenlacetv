@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 declare let jQuery: any;
@@ -8,17 +8,18 @@ declare let jQuery: any;
   templateUrl: './navbar-principal.component.html',
   styleUrls: ['./navbar-principal.component.css']
 })
-export class NavbarPrincipalComponent implements OnInit, OnChanges {
+export class NavbarPrincipalComponent implements OnInit, AfterViewInit {
+
+  public usuario: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // jQuery("#dropdown1").dropdown();
     jQuery(".button-collapse").sideNav();
-    
+    this.usuario = localStorage.getItem('usuario');
   }
 
-  ngOnChanges() {
+  ngAfterViewInit() {
     jQuery("#dropdown1").dropdown();
   }
 

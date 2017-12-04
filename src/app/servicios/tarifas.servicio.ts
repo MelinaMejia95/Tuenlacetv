@@ -12,7 +12,7 @@ export class TarifaServicio{
      }
     
     getTarifa() {
-        const url = `http://192.168.1.54:3000/rates`;
+        const url = `http://localhost:3000/rates`;
         return this._http.get(url).map(response =>{
             return response.json();
         })
@@ -23,7 +23,7 @@ export class TarifaServicio{
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://192.168.1.54:3000/rates/${campoUrl}`;
+        const url = `http://localhost:3000/rates/${campoUrl}`;
         return this._http.get(url).map(response =>{
             return response.json().data || response.json();
         })
@@ -31,19 +31,19 @@ export class TarifaServicio{
     
 
     crearTarifa(contenido: object) {
-        const url = `http://192.168.1.54:3000/rates`;
+        const url = `http://localhost:3000/rates`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
     actualizarTarifa(contenido: object) {
-        const url = 'http://192.168.1.54:3000/rates/' + contenido['id'];
+        const url = 'http://localhost:3000/rates/' + contenido['id'];
         console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
     eliminarTarifa(codigo: string){
-        const url = 'http://192.168.1.54:3000/rates/' + codigo;
+        const url = 'http://localhost:3000/rates/' + codigo;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }

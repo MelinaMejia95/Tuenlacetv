@@ -148,6 +148,7 @@ export class SuscriptoresComponent implements OnInit {
   }
 
   datoSeleccionado(suscriptor) {
+    console.log(suscriptor);
     this.susEdit = suscriptor;
   }
 
@@ -171,16 +172,18 @@ export class SuscriptoresComponent implements OnInit {
         'tipopersona': persona, 'estrato': estrato, 'usuario': localStorage.getItem('usuario')
       }).subscribe(
         data => {
-          console.log(data);
-          localStorage.setItem('entidad', data[0].id);
+          console.log(data[0]);
+          localStorage.setItem('entidad', data[0]['id']);
         });
     }
   }
 
   guardarSe(contrato, direccion, urb, torre, apto, estrato, vivienda, telcasa, telmovil, contacto, fechacon, num, estado, precinto, tiposerv, area){
-    console.log(this.entidad_id, this.barrio, this.tarifa,this.zona, this.servicio, this.inst, this.tec, this.area)
+    console.log(localStorage.getItem('entidad'),contrato,direccion, urb, torre, apto,estrato, vivienda,
+    telcasa, telmovil, contacto, this.barrio, this.zona,fechacon, num, estado, this.tarifa, precinto,
+    this.inst, this.tec, this.servicio, this.area, localStorage.getItem('usuario'))
     if (contrato) {
-      this._suscriptorservicio.crearSeñal({
+      this._suscriptorservicio.crearSenal({
         'entity_id':localStorage.getItem('entidad'),'contrato': contrato, 'direccion': direccion,
         'urbanizacion': urb, 'torre': torre, 'apto': apto, 'estrato': estrato,
         'vivienda': vivienda,'telefono1': telcasa,'telefono2': telmovil,
@@ -197,8 +200,8 @@ export class SuscriptoresComponent implements OnInit {
 
   deleteSuscriptor(){
     if (this.susEdit) {
-      console.log(this.susEdit.id)
-      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.id).subscribe(
+      console.log(this.susEdit.codigo)
+      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.codigo).subscribe(
         data => {
           console.log(data);
       });

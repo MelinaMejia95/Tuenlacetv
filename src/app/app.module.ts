@@ -21,6 +21,8 @@ import { LoginServicio } from './servicios/login.servicio';
 import { BarriosServicio } from './servicios/barrios.servicio';
 import { TarifaServicio } from './servicios/tarifas.servicio';
 import { SuscriptorServicio } from './servicios/suscriptores.servicio';
+import { UsuarioServicio } from './servicios/usuarios.servicio';
+import { EmpresaServicio } from './servicios/empresas.servicio';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -49,7 +51,8 @@ import { HttpModule } from '@angular/http';
     FormsModule,
     HttpModule
   ],
-  providers: [ZonaServicio, LoginServicio, BarriosServicio, TarifaServicio, SuscriptorServicio],
+  providers: [ZonaServicio, LoginServicio, BarriosServicio, TarifaServicio, SuscriptorServicio,
+  UsuarioServicio,EmpresaServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

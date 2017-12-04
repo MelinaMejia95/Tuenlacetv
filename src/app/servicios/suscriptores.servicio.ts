@@ -12,7 +12,7 @@ export class SuscriptorServicio{
      }
     
     getSuscriptor() {
-        const url = `http://192.168.1.54:3000/signal_tvs`;
+        const url = `http://localhost:3000/signal_tvs`;
         return this._http.get(url).map(response =>{
             return response.json();
         })
@@ -23,33 +23,33 @@ export class SuscriptorServicio{
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://192.168.1.54:3000/signal_tvs/${campoUrl}`;
+        const url = `http://localhost:3000/signal_tvs/${campoUrl}`;
         return this._http.get(url).map(response =>{
             return response.json().data || response.json();
         })
     }
     
 
-    crearSeñal(contenido: object) {
-        const url = `http://192.168.1.54:3000/signal_tvs`;
+    crearSenal(contenido: object) {
+        const url = `http://localhost:3000/signal_tvs`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
     crearSuscriptor(contenido: object) {
-        const url = `http://192.168.1.54:3000/people`;
+        const url = `http://localhost:3000/people`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
     actualizarSuscriptor(contenido: object) {
-        const url = 'http://192.168.1.54:3000/rates/' + contenido['id'];
+        const url = 'http://localhost:3000/people/' + contenido['id'];
         //console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
     eliminarSuscriptor(codigo: string){
-        const url = 'http://192.168.1.54:3000/rates/' + codigo;
+        const url = 'http://localhost:3000/signal_tvs/' + codigo;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }

@@ -2,43 +2,48 @@
 <app-navbar-principal></app-navbar-principal>
 
 <div class="row">
-  <div class="col s12 m6">
+  <div class="col s12">
     <div class="card blue lighten-5">
       <div class="card-content black-text">
         <span class="card-title">Tarifas</span>
         <div class="row">
-          <div class="input-field col s2">
-            <select name="filtros" id="select-filtro">
-              <option value="" disabled selected>Buscar por</option>
-              <option value="codigo">Código</option>
-              <option value="concepto">Concepto</option>
-            </select>
-          </div>
-          <div class="input-field col s2">
-            <input id="last_name" type="text" class="validate" [(ngModel)]="prueba" name="prueba">
-          </div>
-          <div class="input-field col s2">
-            <a class="waves-effect waves-light btn" (click)="buscar()">Buscar</a>
-          </div>
-          <div class="input-field col s6" style="width: 347px; margin-left: 301px; margin-top: -72px;">
+
+          <div class="col s12 m6">
             <div class="row">
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m4">
+                <select name="filtros" id="select-filtro">
+                  <option value="" disabled selected>Buscar por</option>
+                  <option value="codigo">Código</option>
+                  <option value="concepto">Concepto</option>
+                </select>
+              </div>
+              <div class="input-field col s12 m4">
+                <input id="last_name" type="text" class="validate" [(ngModel)]="prueba" name="prueba">
+              </div>
+              <div class="input-field col s12 m4">
+                <a class="waves-effect waves-light btn" (click)="buscar()">Buscar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="row">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal1">
                   <i class="material-icons">person_add</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1 modal-trigger" href="#modal2">
                   <i class="material-icons">edit</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1  modal-trigger" href="#modal3">
                   <i class="material-icons">
                     folder_shared</i>
                 </a>
               </div>
-              <div class="input-field col s1 button-right">
+              <div class="input-field col s12 m1 mt-0 button-right">
                 <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la tarifa?', 
                       confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info" (confirm)="deleteTarifa()"></swal>
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
