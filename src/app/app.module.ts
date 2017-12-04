@@ -20,6 +20,7 @@ import { ZonaServicio } from './servicios/zona.servicio';
 import { LoginServicio } from './servicios/login.servicio';
 import { BarriosServicio } from './servicios/barrios.servicio';
 import { TarifaServicio } from './servicios/tarifas.servicio';
+import { SuscriptorServicio } from './servicios/suscriptores.servicio';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -48,7 +49,7 @@ import { HttpModule } from '@angular/http';
     FormsModule,
     HttpModule
   ],
-  providers: [ZonaServicio, LoginServicio, BarriosServicio, TarifaServicio],
+  providers: [ZonaServicio, LoginServicio, BarriosServicio, TarifaServicio, SuscriptorServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

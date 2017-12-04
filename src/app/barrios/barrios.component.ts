@@ -13,9 +13,11 @@ declare let jQuery: any;
 export class BarriosComponent implements OnInit {
 
   barrios: any[] = []
-  campo:string
+  campo: string
+  zonas: string
+  zone:string
   prueba: string
-  usuario:string
+  usuario: string
   barrioEdit: any
   campos = [{ key: 'codigo', name: 'Codigo' }, { key: 'nombre', name: 'Nombre' }]
 
@@ -24,52 +26,66 @@ export class BarriosComponent implements OnInit {
   ngOnInit() {
     this.usuario = localStorage.getItem('usuario');
     this._barrioservicio.getBarrios().subscribe(data => {
-      this.barrios = data;
+      this.barrios = data.neighborhoods;
+      this.zonas = data.zones;
+     setTimeout(() => this.inicializarZonas(), 1000);
     });
-    this.inicializarSelect();
+    this.inicializar();
     jQuery('.modal').modal();
     jQuery('.dropdown-button').dropdown("open");
   }
 
-  inicializarSelect() {
-    jQuery('#select2').material_select();
+  inicializar() {
     jQuery('#select-filtro').material_select();
     jQuery('#select-filtro').on('change', () => {
       this.campo = jQuery('#select-filtro').val();
     });
   }
 
-  capture(option:string) {
+  inicializarZonas() {
+    jQuery('#select2').material_select();
+    jQuery('#select2').on('change', () => {
+      this.zone= jQuery('#select2').val();
+    });
+    jQuery('#select2').on('contentChanged', function () {
+      jQuery(this).material_select();
+    });
+    console.log(this.zonas);
+  }
+
+  capture(option: string) {
     this.campo = option;
   }
 
-buscar() {
-    console.log(this.campo, this.prueba);
+  buscar() {
+    //console.log(this.campo, this.prueba);
     this._barrioservicio.buscarBarrios(this.campo, this.prueba).subscribe(data => {
       this.barrios = data;
+      console.log(this.barrios)
     });
 
   }
 
-  crearBarrio(id, nombre) {
+  crearBarrio(nombre) {
+    console.log(nombre)
     if (nombre) {
-      this._barrioservicio.crearBarrios({'zone_id' : id, 'nombre': nombre, 'usuario': localStorage.getItem('usuario')}).subscribe(
+      this._barrioservicio.crearBarrios({ 'zone_id': this.zone, 'nombre': nombre, 'usuario': localStorage.getItem('usuario') }).subscribe(
         data => {
           console.log(data);
-      });
+        });
     }
   }
 
-  actualizarBarrio(){
-      if (this.barrioEdit) {
-        this.barrioEdit['usuario'] = localStorage.getItem('usuario');
-        console.log(this.barrioEdit);
-        this._barrioservicio.actualizarBarrios(this.barrioEdit).subscribe(
-          data => {
-            console.log(data);
+  actualizarBarrio() {
+    if (this.barrioEdit) {
+      this.barrioEdit['usuario'] = localStorage.getItem('usuario');
+      console.log(this.barrioEdit);
+      this._barrioservicio.actualizarBarrios(this.barrioEdit).subscribe(
+        data => {
+          console.log(data);
         });
-      };
-    
+    };
+
   }
 
   datoSeleccionado(barrio) {
@@ -82,8 +98,8 @@ buscar() {
       this._barrioservicio.eliminarBarrios(this.barrioEdit.id).subscribe(
         data => {
           console.log(data);
-      });
-    }; 
+        });
+    };
   }
 
 }

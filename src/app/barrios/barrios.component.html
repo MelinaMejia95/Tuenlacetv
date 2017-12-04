@@ -83,26 +83,18 @@
 <div id="modal1" class="modal">
   <div class="modal-content">
     <h4>Crear Barrio</h4>
-    <div class="row">
+    <div class="row" >
       <form>
-        <div class="row">
-          <select materialize="material_select" id="select2">
-            <option value="1" #idZona>1</option>
-            <option value="2" #idZona>2</option>
-            <option value="3" #idZona>3</option>
+        <div class="row" >
+          <select class="input-field col s12 m6" id="select2">
+            <option value="" disabled selected>Zonas</option>
+            <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre}}</option>
           </select>
         </div>
         <div class="row">
-          <div class="input-field col s12 m6">
+          <div class="input-field col s12">
             <input id="nombre" type="text" class="validate" #nombreBarrio>
             <label for="nombre">Nombre</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="nombre" type="text" disabled class="validate input-nombre">
-            <label for="nombre">Usuario</label>
-          </div>
-          <div>
-
           </div>
         </div>
       </form>
@@ -111,7 +103,7 @@
   <div class="modal-footer">
     <swal #guardar [options]="{ title: 'Barrio guardado con éxito', 
       confirmButtonText: 'Aceptar'}" type="info"></swal>
-    <a class="waves-effect waves-light btn" (click)="crearBarrio(idZona.value, nombreBarrio.value)" (click)="guardar.show()">Guardar</a>
+    <a class="waves-effect waves-light btn" (click)="crearBarrio(nombreBarrio.value)" (click)="guardar.show()">Guardar</a>
   </div>
 </div>
 
@@ -155,20 +147,16 @@
       <form class="col s12">
         <div class="row" *ngIf="barrioEdit">
           <div class="input-field col s12 m6">
+            <input id="nombre" type="text" disabled class="validate" [(ngModel)]="barrioEdit.zone_id" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nombre">Código Zona</label>
+          </div>
+          <div class="input-field col s12 m6">
             <input id="nombre" type="text" disabled class="validate" [(ngModel)]="barrioEdit.id" [ngModelOptions]="{standalone: true}">
             <label class="active" for="nombre">Código Barrio</label>
           </div>
           <div class="input-field col s12 m6">
             <input id="nombre" type="text" disabled class="validate input-nombre" [(ngModel)]="barrioEdit.nombre" [ngModelOptions]="{standalone: true}">
             <label class="active" for="nombre">Nombre Barrio</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="nombre" type="text" disabled class="validate" [(ngModel)]="barrioEdit.zone_id" [ngModelOptions]="{standalone: true}">
-            <label class="active" for="nombre">Código Zona</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="nombre" type="text" disabled class="validate input-nombre" [(ngModel)]="barrioEdit.usuario" [ngModelOptions]="{standalone: true}">
-            <label class="active" for="nombre">Usuario</label>
           </div>
         </div>
       </form>

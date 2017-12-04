@@ -40,7 +40,7 @@
               </div>
               <div class="input-field col s1 button-right">
                 <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la tarifa?', 
-                      confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
+                      confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info" (confirm)="deleteTarifa()"></swal>
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                   <i class="material-icons">delete</i>
                 </a>
@@ -59,6 +59,7 @@
                   <th>Código Tarifa</th>
                   <th>Código Zona</th>
                   <th>Concepto</th>
+                  <th>Plan</th>
                   <th>Valor</th>
                   <th>Estado</th>
                 </tr>
@@ -66,11 +67,12 @@
               <tbody>
                 <tr *ngFor='let tarifa of tarifas; let i = index'>
                   <td>
-                    <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(tariffa)" />
+                    <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(tarifa)" />
                     <label [attr.for]="'radio_'+i">{{ tarifa.id }}</label>
                   </td>
                   <td>{{ tarifa.zone_id }}</td>
                   <td>{{ tarifa.concept_id }}</td>
+                  <td>{{ tarifa.plan_id}}</td>
                   <td>{{ tarifa.valor }}</td>
                   <td>{{ tarifa.estado }}</td>
                 </tr>
@@ -91,20 +93,17 @@
         <div class="row">
           <select class="input-field col s12 m6" id="select2">
             <option value="" disabled selected>Zonas</option>
-            <option value="1" #idZona>Zona1</option>
-            <option value="2" #idZona>Zona2</option>
+            <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
           </select>
           <select class="input-field col s12 m6" id="select3">
             <option value="" disabled selected>Concepto</option>
-            <option value="1" #idConcep>Concepto1</option>
-            <option value="2" #idConcep>Concepto2</option>
+            <option [value]="concepto.id" *ngFor="let concepto of conceptos">{{ concepto.descripcion }}</option>
           </select>
         </div>
         <div class="row">
           <select class="input-field col s12 m6" id="select4">
             <option value="" disabled selected>Plan</option>
-            <option value="1" #idPlan>Plan1</option>
-            <option value="2" #idPlan>Plan2</option>
+            <option [value]="plan.id" *ngFor="let plan of plans">{{ plan.nombre }}</option>
           </select>
           <div class="input-field col s12 m6">
             <input id="valor" type="text" class="validate input-nombre" #valor>
@@ -114,24 +113,18 @@
         <div class="row">
           <select class="input-field col s12 m6" id="select5">
             <option value="" disabled selected>Estado</option>
-            <option value="1" #estado>Activo</option>
-            <option value="2" #estado>Inactivo</option>
+            <option value="A" #estado>Activo</option>
+            <option value="I" #estado>Inactivo</option>
           </select>
-          <div class="input-field col s12 m6">
-            <input id="usuario" disabled type="text" class="validate input-nombre"[(ngModel)]="usuario" [ngModelOptions]="{standalone: true}">
-            <label  class="active" for="usuario">Usuario</label>
-          </div>
         </div>
 
       </form>
     </div>
   </div>
   <div class="modal-footer">
-      <swal #guardar [options]="{ title: 'Tarifa guardada con éxito', 
+    <swal #guardar [options]="{ title: 'Tarifa guardada con éxito', 
       confirmButtonText: 'Aceptar'}" type="info"></swal>
-    <a class="waves-effect waves-light btn" 
-    (click)="crearTarifa(idZona.value, idConcep.value, idPlan.value, valor.value, estado.value)" 
-    (click)="guardar.show()">Guardar</a>
+    <a class="waves-effect waves-light btn" (click)="crearTarifa(valor.value)" (click)="guardar.show()">Guardar</a>
   </div>
 </div>
 
@@ -141,40 +134,46 @@
     <div class="row">
       <form>
         <div class="row">
-          <select class="input-field col s12 m6">
-            <option value="" disabled selected>Zonas</option>
-            <option value="1">Zona1</option>
-            <option value="2">Zona2</option>
-          </select>
-          <select class="input-field col s12 m6">
-            <option value="" disabled selected>Concepto</option>
-            <option value="1">Concepto1</option>
-            <option value="2">Concepto2</option>
-          </select>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <input disabled id="codigo" type="text" class="validate">
-            <label for="last_name">Código</label>
+          <div class="row" *ngIf="tarifaEdit">
+            <div class="input-field col s12 m6">
+              <input id="codigo" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.id" [ngModelOptions]="{standalone: true}">
+              <label class="active" for="codigo">Código</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input id="codigo_zona" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.zone_id" [ngModelOptions]="{standalone: true}">
+              <label class="active" for="codigo_zona">Código Zona</label>
+            </div>
           </div>
-          <div class="input-field col s12 m6">
-            <input id="codigo" type="text" class="validate input-nombre">
-            <label for="nombre">Valor</label>
+          <div class="row" *ngIf="tarifaEdit">
+            <div class="input-field col s12 m6">
+              <input disabled id="concepto" type="text" class="validate" [(ngModel)]="tarifaEdit.concept_id" [ngModelOptions]="{standalone: true}">
+              <label class="active" for="concepto">Concepto</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input id="plan" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.plan_id" [ngModelOptions]="{standalone: true}">
+              <label class="active" for="plan">Plan</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <select>
-            <option value="" disabled selected>Estado</option>
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
-          </select>
+          <div class="row">
+            <div class="input-field col s12 m6" *ngIf="tarifaEdit">
+              <input id="valor" type="text" class="validate" #valor [(ngModel)]="tarifaEdit.valor" [ngModelOptions]="{standalone: true}">
+              <label class="active" for="valor">Valor</label>
+            </div>
+            <select class="input-field col s12 m6" id="select6" >
+              <option value="" disabled selected>Estado</option>
+              <option value="A" #estado>Activo</option>
+              <option value="I" #estado>Inactivo</option>
+            </select>
+          </div>
         </div>
 
       </form>
     </div>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn">Guardar</a>
+    <swal #actualizar [options]="{ title: 'Tarifa actualizada con éxito', 
+      confirmButtonText: 'Aceptar'}" type="info"></swal>
+    <a class="waves-effect waves-light btn" (click)="actualizarTarifa()" (click)="actualizar.show()">Guardar</a>
   </div>
 </div>
 
@@ -183,30 +182,38 @@
     <h4>Tarifa</h4>
     <div class="row">
       <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <label>Código Zona: </label>
-          </div>
-          <div class="input-field col s12 m6">
-            <label>Nombre Zona: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <label>Nombre Concepto: </label>
-          </div>
-          <div class="input-field col s12 m6">
-            <label>Código: </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <label>Valor: </label>
-          </div>
-          <div class="input-field col s12 m6">
-            <label>Estado: </label>
-          </div>
-        </div>
+          <div class="row">
+              <div class="row" *ngIf="tarifaEdit">
+                <div class="input-field col s12 m6">
+                  <input id="codigo" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.id" [ngModelOptions]="{standalone: true}">
+                  <label class="active" for="codigo">Código</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="codigo_zona" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.zone_id" [ngModelOptions]="{standalone: true}">
+                  <label class="active" for="codigo_zona">Código Zona</label>
+                </div>
+              </div>
+              <div class="row" *ngIf="tarifaEdit">
+                <div class="input-field col s12 m6">
+                  <input disabled id="concepto" type="text" class="validate" [(ngModel)]="tarifaEdit.concept_id" [ngModelOptions]="{standalone: true}">
+                  <label class="active" for="concepto">Concepto</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="plan" disabled type="text" class="validate input-nombre" [(ngModel)]="tarifaEdit.plan_id" [ngModelOptions]="{standalone: true}">
+                  <label class="active" for="plan">Plan</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6" *ngIf="tarifaEdit">
+                  <input id="valor" disabled type="text" class="validate" #valor [(ngModel)]="tarifaEdit.valor" [ngModelOptions]="{standalone: true}">
+                  <label class="active" for="valor">Valor</label>
+                </div>
+                <div class="input-field col s12 m6" *ngIf="tarifaEdit">
+                    <input id="estado" disabled type="text" class="validate" [(ngModel)]="tarifaEdit.estado" [ngModelOptions]="{standalone: true}">
+                    <label class="active" for="estado">Estado</label>
+                  </div>
+              </div>
+            </div>
       </form>
     </div>
   </div>

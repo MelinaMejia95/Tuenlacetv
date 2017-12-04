@@ -11,7 +11,7 @@ export class BarriosServicio{
      }
     
 getBarrios() {
-        const url = `http://localhost:3000/neighborhoods`;
+        const url = `http://192.168.1.54:3000/neighborhoods`;
         return this._http.get(url).map(response =>{
             return response.json();
         })
@@ -22,26 +22,26 @@ getBarrios() {
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://localhost:3000/neighborhoods/${campoUrl}`;
+        const url = `http://192.168.1.54:3000/neighborhoods/${campoUrl}`;
         return this._http.get(url).map(response =>{
             return response.json().data || response.json();
         })
     }
 
     crearBarrios(contenido: object) {
-        const url = `http://localhost:3000/neighborhoods`;
+        const url = `http://192.168.1.54:3000/neighborhoods`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
     actualizarBarrios(contenido: object) {
-        const url = 'http://localhost:3000/neighborhoods/' + contenido['id'];
+        const url = 'http://192.168.1.54:3000/neighborhoods/' + contenido['id'];
         console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
     eliminarBarrios(codigo: string){
-        const url = 'http://localhost:3000/neighborhoods/' + codigo;
+        const url = 'http://192.168.1.54:3000/neighborhoods/' + codigo;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }

@@ -11,7 +11,7 @@ export class ZonaServicio{
      }
     
     getZonas() {
-        const url = `http://localhost:3000/zones`;
+        const url = `http://192.168.1.54:3000/zones`;
         return this._http.get(url).map(response =>{
             return response.json();
         })
@@ -22,7 +22,7 @@ export class ZonaServicio{
         if (campo && valor) {
             campoUrl = `${campo}/${valor}`;
         }
-        const url = `http://localhost:3000/zones/${campoUrl}`;
+        const url = `http://192.168.1.54:3000/zones/${campoUrl}`;
         return this._http.get(url).map(response =>{
             return response.json().data || response.json();
         })
@@ -30,19 +30,19 @@ export class ZonaServicio{
     
 
     crearZonas(contenido: object) {
-        const url = `http://localhost:3000/zones`;
+        const url = `http://192.168.1.54:3000/zones`;
         console.log(contenido);
         return this._http.post(url, contenido).map(response => response.json());
     }
 
     actualizarZonas(contenido: object) {
-        const url = 'http://localhost:3000/zones/' + contenido['id'];
+        const url = 'http://192.168.1.54:3000/zones/' + contenido['id'];
         console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
     eliminarZonas(codigo: string){
-        const url = 'http://localhost:3000/zones/' + codigo;
+        const url = 'http://192.168.1.54:3000/zones/' + codigo;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }
