@@ -434,11 +434,11 @@
         <h5>Señal</h5>
         <div class="row">
           <div class="input-field col s12 m3">
-            <input id="contrato" type="text" class="validate input-nombre" #contrato>
+            <input id="contrato" type="text" class="validate input-nombre" #contrato1>
             <label for="contrato">Contrato</label>
           </div>
           <div class="input-field col s12 m3">
-            <input id="dir" type="text" class="validate input-nombre" #direccion>
+            <input id="dir" type="text" class="validate input-nombre" #direccion1>
             <label for="dir">Dirección</label>
           </div>
           <div class="input-field col s12 m3">
@@ -543,7 +543,7 @@
           <div class="input-field col s12 m3">
             <swal #guardarSenal [options]="{ title: 'Señal guardada con éxito', 
                 confirmButtonText: 'Aceptar'}" type="info"></swal>
-            <a class="waves-effect waves-light btn" style="margin-left: 18rem;" (click)="guardarSe(contrato.value, direccion.value, urb.value, torre.value, apto.value,
+            <a class="waves-effect waves-light btn" style="margin-left: 18rem;" (click)="guardarSe(contrato1.value, direccion1.value, urb.value, torre.value, apto.value,
               estrato.value, vivienda.value, telcasa.value, telmovil.value, contacto.value, fechacon.value,
               num.value, estado.value, precinto.value, tiposerv.value, area.value)" (click)="guardarSenal.show()">Guardar</a>
           </div>
