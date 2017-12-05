@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SuscriptorServicio} from '../servicios/suscriptores.servicio';
+import { SuscriptorServicio } from '../servicios/suscriptores.servicio';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
@@ -14,36 +14,37 @@ declare let jQuery: any;
 export class SuscriptoresComponent implements OnInit {
 
   suscriptores: any[] = []
-  campo:string
-  zonas:string
-  barrios:string
-  barrio:string
-  entidad:string
-  vivienda:string
-  documento:string
-  inst:string
-  zona:string
-  tarifas:string
-  estrato:string
-  tec:string
-  instalacion:string
-  persona1:string
-  estado:string
-  servicio:string
-  documento2:string
-  tarifa:string
-  tecnologias:string
-  entidad1:string
-  persona:string
+  campo: string
+  zonas: string
+  barrios: string
+  barrio: string
+  entidad: string
+  vivienda: string
+  documento: string
+  inst: string
+  zona: string
+  tarifas: string
+  estrato: string
+  tec: string
+  instalacion: string
+  persona1: string
+  estado: string
+  servicio: string
+  documento2: string
+  tarifa: string
+  tecnologias: string
+  entidad1: string
+  persona: string
   prueba: string
-  usuario:string
-  barrio2:string
-  zona2:string
-  area:string
+  usuario: string
+  barrio2: string
+  zona2: string
+  area: string
   barrioEdit: any
-  entidad_id:string
-  susEdit:any
-  documentos:string
+  entidad_id: string
+  susEdit: any
+  susAct: any[] = []
+  documentos: string
 
   constructor(private _suscriptorservicio: SuscriptorServicio) { }
 
@@ -52,7 +53,7 @@ export class SuscriptoresComponent implements OnInit {
     this._suscriptorservicio.getSuscriptor().subscribe(data => {
       this.suscriptores = data.signals;
       this.barrios = data.neighborhoods;
-      this.tarifas = data.rates; 
+      this.tarifas = data.rates;
       this.zonas = data.zones;
       this.instalacion = data.type_installations;
       this.tecnologias = data.technologys;
@@ -60,7 +61,7 @@ export class SuscriptoresComponent implements OnInit {
       setTimeout(() => this.inicializarSuscriptores(), 1000);
     });
     this.inicializarSelect();
-    jQuery('select').material_select(); 
+    jQuery('select').material_select();
     jQuery('.modal').modal();
     jQuery('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
@@ -71,7 +72,7 @@ export class SuscriptoresComponent implements OnInit {
       closeOnSelect: false,// Close upon selecting a date,
       format: 'dd-mm-yyyy'
     });
-    
+
   }
 
   inicializarSuscriptores() {
@@ -161,7 +162,7 @@ export class SuscriptoresComponent implements OnInit {
     });
   }
 
-  inicializarSelect () {
+  inicializarSelect() {
     jQuery('#select-filtro').material_select();
     jQuery('#select-filtro').on('change', () => {
       this.campo = jQuery('#select-filtro').val();
@@ -186,13 +187,13 @@ export class SuscriptoresComponent implements OnInit {
 
   }
 
-  guardarPersona(entidad, nit, nombre1, nombre2, apellido1, apellido2, dir, tel1, tel2, correo, fechanac, persona, estrato){
-    console.log(estrato, dir,persona)
+  guardarPersona(entidad, nit, nombre1, nombre2, apellido1, apellido2, dir, tel1, tel2, correo, fechanac, persona, estrato) {
+    console.log(estrato, dir, persona)
     if (nit) {
       this._suscriptorservicio.crearSuscriptor({
-        'funcion': entidad,'type_document_id': this.documento, 'documento': nit,
+        'funcion': entidad, 'type_document_id': this.documento, 'documento': nit,
         'nombre1': nombre1, 'nombre2': nombre2, 'apellido1': apellido1, 'apellido2': apellido2,
-        'direccion': dir,'neighborhood_id':  this.barrio,'zone_id': this.zona,
+        'direccion': dir, 'neighborhood_id': this.barrio, 'zone_id': this.zona,
         'telefono1': tel1, 'telefono2': tel2, 'correo': correo, 'fechanac': fechanac,
         'tipopersona': persona, 'estrato': estrato, 'usuario': localStorage.getItem('usuario')
       }).subscribe(
@@ -203,18 +204,18 @@ export class SuscriptoresComponent implements OnInit {
     }
   }
 
-  guardarSe(contrato, direccion, urb, torre, apto, estrato, vivienda, telcasa, telmovil, contacto, fechacon, num, estado, precinto, tiposerv, area){
-    console.log(localStorage.getItem('entidad'),contrato,direccion, urb, torre, apto,estrato, vivienda,
-    telcasa, telmovil, contacto, this.barrio, this.zona,fechacon, num, estado, this.tarifa, precinto,
-    this.inst, this.tec, this.servicio, this.area, localStorage.getItem('usuario'))
+  guardarSe(contrato, direccion, urb, torre, apto, estrato, vivienda, telcasa, telmovil, contacto, fechacon, num, estado, precinto, tiposerv, area) {
+    console.log(localStorage.getItem('entidad'), contrato, direccion, urb, torre, apto, estrato, vivienda,
+      telcasa, telmovil, contacto, this.barrio, this.zona, fechacon, num, estado, this.tarifa, precinto,
+      this.inst, this.tec, this.servicio, this.area, localStorage.getItem('usuario'))
     if (contrato) {
       this._suscriptorservicio.crearSenal({
-        'entity_id':localStorage.getItem('entidad'),'contrato': contrato, 'direccion': direccion,
+        'entity_id': localStorage.getItem('entidad'), 'contrato': contrato, 'direccion': direccion,
         'urbanizacion': urb, 'torre': torre, 'apto': apto, 'estrato': estrato,
-        'vivienda': vivienda,'telefono1': telcasa,'telefono2': telmovil,
+        'vivienda': vivienda, 'telefono1': telcasa, 'telefono2': telmovil,
         'contacto': contacto, 'neighborhood_id': this.barrio, 'zone_id': this.zona, 'fechacontrato': fechacon,
         'numerotvs': num, 'estado': estado, 'rate_id': this.tarifa, 'precinto': precinto,
-        'type_installation_id': this.inst,'technology_id': this.tec,'tiposervicio': this.servicio,
+        'type_installation_id': this.inst, 'technology_id': this.tec, 'tiposervicio': this.servicio,
         'areainstalacion': this.area, 'usuario': localStorage.getItem('usuario')
       }).subscribe(
         data => {
@@ -223,26 +224,43 @@ export class SuscriptoresComponent implements OnInit {
     }
   }
 
-  deleteSus(){
+  deleteSus() {
     if (this.susEdit) {
       console.log(this.susEdit.codigo)
-      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.codigo, localStorage.getItem('entidad')).subscribe(
-        data => {
-          console.log(data);
-      });
-    }; 
-  }
-
-  actualizarSuscriptor(entidad, persona, estrato) {
-    if (this.susEdit) 
-    this.susEdit['estrato'] = this.estrato;
-      this.susEdit['usuario'] = localStorage.getItem('usuario');
-      console.log(this.susEdit);
-      this._suscriptorservicio.actualizarSuscriptor(this.susEdit).subscribe(
+      console.log(this.susEdit.codigo_entidad)
+      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.codigo, this.susEdit.codigo_entidad).subscribe(
         data => {
           console.log(data);
         });
     };
-  
+  }
+
+  actualizarSuscriptor(entidad, persona, estrato) {
+    if (this.susEdit)
+    this.persona
+    this.susAct['codigo'] = this.susEdit['codigo_persona'];
+    this.susAct['type_document_id'] = this.susEdit['type_document_id'];
+    this.susAct['documento'] = this.susEdit['documento'];
+    this.susAct['nombre1'] = this.susEdit['nombre1'];
+    this.susAct['nombre2'] = this.susEdit['nombre2'];
+    this.susAct['apellido1'] = this.susEdit['apellido1'];
+    this.susAct['apellido2'] = this.susEdit['apellido2'];
+    this.susAct['direccion'] = this.susEdit['direccionPersona'];
+    this.susAct['neighborhood_id'] = this.susEdit['barrioPersona'];
+    this.susAct['zone_id'] = this.susEdit['zonaPersona'];
+    this.susAct['telefono1'] = this.susEdit['telefono1Persona'];
+    this.susAct['telefono2'] = this.susEdit['telefono2Persona'];
+    this.susAct['correo'] = this.susEdit['correo'];
+    this.susAct['fechanac'] = this.susEdit['fechanac'];
+    this.susAct['tipopersona'] = this.persona;
+    this.susAct['estrato'] = this.estrato;
+    this.susAct['usuario'] = localStorage.getItem('usuario');
+    console.log(this.susAct);
+    this._suscriptorservicio.actualizarSuscriptor(this.susAct).subscribe(
+      data => {
+        console.log(data);
+      });
+  };
+
 
 }

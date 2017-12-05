@@ -112,9 +112,9 @@
             <input id="codigo" disabled type="text" class="validate" #codigo>
             <label for="codigo">Código</label>
           </div>
-          <select class="input-field col s12 m3" id="select1">
+          <select class="input-field col s12 m3" id="select1" #entidad>
             <option value="" disabled selected>Tipo Entidad</option>
-            <option value="1" #entidad>Suscriptor</option>
+            <option value="1">Suscriptor</option>
           </select>
           <select class="input-field col s12 m3" id="select2">
             <option value="" disabled selected>Tipo Documento</option>
@@ -177,10 +177,10 @@
           </div>
         </div>
         <div class="row">
-          <select class="input-field col s12 m3" id="select5">
+          <select class="input-field col s12 m3" id="select5" #persona>
             <option value="" disabled selected>Tipo Persona</option>
-            <option value="N" #persona>Natural</option>
-            <option value="J" #persona>Jurídica</option>
+            <option value="N">Natural</option>
+            <option value="J">Jurídica</option>
           </select>
           <select class="input-field col s12 m3" id="select6" #estrato1>
             <option value="" disabled selected>Estrato</option>
@@ -339,7 +339,7 @@
         <h5>Persona</h5>
         <div class="row">
           <div class="input-field col s12 m3" *ngIf="susEdit">
-            <input id="codigo" disabled type="text" class="validate" [(ngModel)]="susEdit.codigo" [ngModelOptions]="{standalone: true}">
+            <input id="codigo" disabled type="text" class="validate" [(ngModel)]="susEdit.codigo_persona" [ngModelOptions]="{standalone: true}">
             <label class="active" for="codigo">Código</label>
           </div>
           <select class="input-field col s12 m3" id="select17" #entidad1>
@@ -375,7 +375,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12 m3" *ngIf="susEdit">
-            <input id="dir" type="text" class="validate input-nombre" [(ngModel)]="susEdit.direccion" [ngModelOptions]="{standalone: true}">
+            <input id="dir" type="text" class="validate input-nombre" [(ngModel)]="susEdit.direccionPersona" [ngModelOptions]="{standalone: true}">
             <label class="active" for="dir">Dirección</label>
           </div>
           <select class="input-field col s12 m3" id="select19">
@@ -388,13 +388,13 @@
             <option [value]="zona.id" *ngFor="let zona of zonas">{{ zona.nombre }}</option>
           </select>
           <div class="input-field col s12 m3" *ngIf="susEdit">
-            <input id="tel_casa" type="text" class="validate"  [(ngModel)]="susEdit.telefono1" [ngModelOptions]="{standalone: true}">
+            <input id="tel_casa" type="text" class="validate"  [(ngModel)]="susEdit.telefono1Persona" [ngModelOptions]="{standalone: true}">
             <label class="active" for="tel_casa">Teléfono casa</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12 m4" *ngIf="susEdit">
-            <input id="tel_movil" type="text" class="validate input-nombre" [(ngModel)]="susEdit.telefono2" [ngModelOptions]="{standalone: true}">
+            <input id="tel_movil" type="text" class="validate input-nombre" [(ngModel)]="susEdit.telefono2Persona" [ngModelOptions]="{standalone: true}">
             <label class="active" for="tel_movil">Teléfono móvil</label>
           </div>
           <div class="input-field col s12 m4" *ngIf="susEdit">
@@ -407,12 +407,12 @@
           </div>
         </div>
         <div class="row">
-          <select class="input-field col s12 m3" id="select21"  #persona1>
+          <select class="input-field col s12 m3" id="select21"  #persona2>
             <option value="" disabled selected>Tipo Persona</option>
             <option value="N">Natural</option>
             <option value="J">Jurídica</option>
           </select>
-          <select class="input-field col s12 m3" id="select6" #estrato1>
+          <select class="input-field col s12 m3" id="select6" #estrato2>
             <option value="" disabled selected>Estrato</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -428,7 +428,7 @@
           <div class="input-field col s12 m4">
             <swal #actualizar [options]="{ title: 'Suscriptor actualizado con éxito', 
             confirmButtonText: 'Aceptar'}" type="info"></swal>
-          <a class="waves-effect waves-light btn" (click)="actualizarSuscriptor(entidad1.value, persona1.value,estrato1.value)" (click)="actualizar.show()">Guardar</a>
+          <a class="waves-effect waves-light btn" (click)="actualizarSuscriptor(entidad1.value, persona2.value,estrato2.value)" (click)="actualizar.show()">Guardar</a>
           </div>
         </div>
       </form>
