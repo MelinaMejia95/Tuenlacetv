@@ -80,7 +80,7 @@ export class EmpresaComponent implements OnInit {
     if (this.empresaEdit) {
       this.empresaEdit['regimen'] = regimen;
       this.empresaEdit['contribuyente'] = contribuyente;
-      this.empresaEdit['contribuyente'] = this.ciudad2;
+      this.empresaEdit['idciudad'] = this.ciudad2;
       this.empresaEdit['usuario'] = localStorage.getItem('usuario');
       console.log(this.empresaEdit);
       this._empresaservicio.actualizarEmpresa(this.empresaEdit).subscribe(
