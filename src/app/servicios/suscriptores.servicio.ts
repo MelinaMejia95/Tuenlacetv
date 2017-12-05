@@ -43,13 +43,13 @@ export class SuscriptorServicio{
     }
 
     actualizarSuscriptor(contenido: object) {
-        const url = 'http://localhost:3000/people/' + contenido['id'];
+        const url = 'http://localhost:3000/people/' + contenido['codigo'];
         //console.log(contenido);
         return this._http.put(url, contenido).map(response => response.json());
     }
 
-    eliminarSuscriptor(codigo: string){
-        const url = 'http://localhost:3000/signal_tvs/' + codigo;
+    eliminarSuscriptor(codigo: string, entidad:string){
+        const url = 'http://localhost:3000/signal_tvs/' + codigo + '/' + entidad;
         console.log(codigo);
         return this._http.delete(url).map(response => response.json());
     }

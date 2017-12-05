@@ -141,7 +141,7 @@
             </div>
           </div>
           <div class="row">
-              <select class="input-field col s12 m6" id="select6" #nivel>
+              <select class="input-field col s12 m6" id="select6" #nivel1>
                   <option value="" disabled selected>Nivel</option>
                   <option value="1" >1</option>
                   <option value="2" >2</option>
@@ -154,7 +154,7 @@
   <div class="modal-footer">
       <swal #actualizar [options]="{ title: 'Usuario actualizado con éxito', 
       confirmButtonText: 'Aceptar'}" type="info"></swal>
-    <a class="waves-effect waves-light btn" (click)="actualizarUsuario(nivel.value)" (click)="actualizar.show()">Guardar</a>
+    <a class="waves-effect waves-light btn" (click)="actualizarUsuario(nivel1.value)" (click)="actualizar.show()">Guardar</a>
   </div>
 </div>
 

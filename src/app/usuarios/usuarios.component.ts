@@ -52,6 +52,7 @@ usuario:any
   }
 
   crearUsuario(login, nombre, clave, nivel) {
+    console.log(nivel)
     if (login) {
       this._usuarioservicio.crearUsuario({
         'login': login,
@@ -65,6 +66,7 @@ usuario:any
   }
 
   actualizarUsuario(nivel) {
+    console.log(nivel)
     if (this.usuarioEdit) {
       this.usuarioEdit['nivel'] = nivel;
       this.usuarioEdit['usuario'] = localStorage.getItem('usuario');

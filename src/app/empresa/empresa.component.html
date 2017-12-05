@@ -44,7 +44,7 @@
               </div>
               <div class="input-field col s3 m1 mt-0 button-right">
                 <swal #dialog [options]="{ title: '¿Está seguro que desea eliminar la empresa?', 
-                confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info"></swal>
+                confirmButtonText: 'Eliminar', showCancelButton: 'true', type: 'warning' }" type="info" (confirm)="deleteEmpresa()"></swal>
                 <a class="btn-floating btn-large waves-effect waves-light yellow darken-1" (click)="dialog.show()">
                   <i class="material-icons">delete</i>
                 </a>
@@ -130,13 +130,9 @@
             <option value="1">Común</option>
             <option value="2">Simplificado</option>
           </select>
-          <div class="input-field col s12 m3">
+          <div class="input-field col s12 m6">
             <input id="actividad" type="text" class="validate input-nombre" #actividad>
             <label for="actividad">Actividad</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="fax" type="text" class="validate" #fax>
-            <label for="fax">Fax</label>
           </div>
           <select class="input-field col s12 m3" #contribuyente>
             <option value="" disabled selected>Gran contribuyente</option>
@@ -153,17 +149,20 @@
             <input id="representante" type="text" class="validate input-nombre" #representante>
             <label for="representante">Representante</label>
           </div>
-          <select class="input-field col s12 m3" #ciudad>
+          <select class="input-field col s12 m3" #ciudad id="select2">
             <option value="" disabled selected>Ciudad</option>
-            <option value="1">Si</option>
-            <option value="2">No</option>
+            <option [value]="ciudad.id" *ngFor="let ciudad of ciudades">{{ ciudad.nombre }}</option>
           </select>
         </div>
       </form>
     </div>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn">Guardar</a>
+    <swal #guardar [options]="{ title: 'Empresa guardada con éxito', 
+    confirmButtonText: 'Aceptar'}" type="info"></swal>
+  <a class="waves-effect waves-light btn" (click)="crearEmpresa(nit.value, nombre.value, direccion.value, tel1.value,
+    tel2.value, fax.value, contacto.value, correo.value, regimen.value, actividad.value, contribuyente.value, resolucion.value,
+    representante.value)" (click)="guardar.show()">Guardar</a>
   </div>
 </div>
 
@@ -172,111 +171,79 @@
     <h4>Actualizar Empresa</h4>
     <div class="row">
       <form>
-        <div class="row">
+        <div class="row" *ngIf="empresaEdit">
           <div class="input-field col s12 m3">
-            <input id="nit" type="text" class="validate">
-            <label for="nit">NIT</label>
+            <input id="nit" type="text" class="validate" [(ngModel)]="empresaEdit.nit" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nit">NIT</label>
           </div>
           <div class="input-field col s12 m3">
-            <input id="nombre" type="text" class="validate input-nombre">
-            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.nombre" [ngModelOptions]="{standalone: true}">
+            <label  class="active" for="nombre">Nombre</label>
           </div>
           <div class="input-field col s12 m3">
-            <input id="direccion" type="text" class="validate">
-            <label for="direccion">Dirección</label>
+            <input id="direccion" type="text" class="validate" [(ngModel)]="empresaEdit.direccion" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="direccion">Dirección</label>
           </div>
           <div class="input-field col s12 m3">
-            <input id="correo" type="text" class="validate input-nombre">
-            <label for="correo">Correo</label>
+            <input id="correo" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.correo" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="correo">Correo</label>
+          </div>
+        </div>
+        <div class="row" *ngIf="empresaEdit">
+          <div class="input-field col s12 m3">
+            <input id="tel1" type="text" class="validate" [(ngModel)]="empresaEdit.telefono1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel1">Teléfono 1</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="tel2" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.telefono2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel2">Teléfono 2</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="fax" type="text" class="validate" [(ngModel)]="empresaEdit.fax" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="fax">Fax</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input id="contacto" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.contacto" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="contacto">Contacto</label>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12 m3">
-            <input id="tel1" type="text" class="validate">
-            <label for="tel1">Teléfono 1</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="tel2" type="text" class="validate input-nombre">
-            <label for="tel2">Teléfono 2</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="fax" type="text" class="validate">
-            <label for="fax">Fax</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="contacto" type="text" class="validate input-nombre">
-            <label for="contacto">Contacto</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m3">
-            <input id="tel1" type="text" class="validate">
-            <label for="tel1">Teléfono 1</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="tel2" type="text" class="validate input-nombre">
-            <label for="tel2">Teléfono 2</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="fax" type="text" class="validate">
-            <label for="fax">Fax</label>
-          </div>
-          <div class="input-field col s12 m3">
-            <input id="contacto" type="text" class="validate input-nombre">
-            <label for="contacto">Contacto</label>
-          </div>
-        </div>
-        <div class="row">
-          <select class="input-field col s12 m3">
+          <select class="input-field col s12 m3" #regimen1>
             <option value="" disabled selected>Régimen</option>
             <option value="1">Común</option>
             <option value="2">Simplificado</option>
           </select>
-          <div class="input-field col s12 m3">
-            <input id="actividad" type="text" class="validate input-nombre">
-            <label for="actividad">Actividad</label>
+          <div class="input-field col s12 m6" *ngIf="empresaEdit">
+            <input id="actividad" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.actividade" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="actividad">Actividad</label>
           </div>
-          <div class="input-field col s12 m3">
-            <input id="fax" type="text" class="validate">
-            <label for="fax">Fax</label>
-          </div>
-          <select class="input-field col s12 m3">
+          <select class="input-field col s12 m3" #contribuyente1>
             <option value="" disabled selected>Gran contribuyente</option>
             <option value="1">Si</option>
             <option value="2">No</option>
           </select>
         </div>
         <div class="row">
-          <div class="input-field col s12 m6">
-            <input id="resolucion" type="text" class="validate input-nombre">
-            <label for="resolucion">Resolución Contrato</label>
+          <div class="input-field col s12 m6" *ngIf="empresaEdit">
+            <input id="resolucion" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.resolucionCntv" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="resolucion">Resolución Contrato</label>
           </div>
-          <div class="input-field col s12 m3">
-            <input id="representante" type="text" class="validate input-nombre">
-            <label for="representante">Representante</label>
+          <div class="input-field col s12 m3" *ngIf="empresaEdit">
+            <input id="representante" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.representante" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="representante">Representante</label>
           </div>
-          <select class="input-field col s12 m3">
+          <select class="input-field col s12 m3"  id="select3">
             <option value="" disabled selected>Ciudad</option>
-            <option value="1">Si</option>
-            <option value="2">No</option>
+            <option [value]="ciudad.id" *ngFor="let ciudad of ciudades">{{ ciudad.nombre }}</option>
           </select>
-        </div>
-        <div class="row">
-          <div class=" file-field input-field col s12 m9">
-            <div class="btn">
-              <span>Imagen</span>
-              <input type="file">
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
-            </div>
-          </div>
         </div>
       </form>
     </div>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-light btn">Guardar</a>
+    <swal #actualizar [options]="{ title: 'Empresa actualizada con éxito', 
+    confirmButtonText: 'Aceptar'}" type="info"></swal>
+  <a class="waves-effect waves-light btn" (click)="actualizarEmpresa(regimen1.value, contribuyente1.value)" (click)="actualizar.show()">Guardar</a>
   </div>
 </div>
 
@@ -284,55 +251,69 @@
   <div class="modal-content">
     <h4>Empresa</h4>
     <div class="row">
-      <form class="col s12">
-        <div class="row">
+      <form>
+        <div class="row" *ngIf="empresaEdit">
           <div class="input-field col s12 m3">
-            <label>NIT: </label>
+            <input disabled id="nit" type="text" class="validate" [(ngModel)]="empresaEdit.nit" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="nit">NIT</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Nombre: </label>
+            <input disabled id="nombre" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.nombre" [ngModelOptions]="{standalone: true}">
+            <label  class="active" for="nombre">Nombre</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Dirección: </label>
+            <input disabled id="direccion" type="text" class="validate" [(ngModel)]="empresaEdit.direccion" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="direccion">Dirección</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Correo: </label>
+            <input disabled id="correo" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.correo" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="correo">Correo</label>
           </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="empresaEdit">
           <div class="input-field col s12 m3">
-            <label>Teléfono 1: </label>
+            <input disabled id="tel1" type="text" class="validate" [(ngModel)]="empresaEdit.telefono1" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel1">Teléfono 1</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Teléfono 2: </label>
+            <input disabled id="tel2" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.telefono2" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="tel2">Teléfono 2</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Fax: </label>
+            <input disabled id="fax" type="text" class="validate" [(ngModel)]="empresaEdit.fax" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="fax">Fax</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Contacto: </label>
+            <input disabled id="contacto" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.contacto" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="contacto">Contacto</label>
           </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="empresaEdit">
           <div class="input-field col s12 m3">
-            <label>Régimen: </label>
+            <input disabled id="regimen" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.regimen" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="regimen">Régimen</label>
+          </div>
+          <div class="input-field col s12 m6" >
+            <input disabled id="actividad" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.actividade" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="actividad">Actividad</label>
           </div>
           <div class="input-field col s12 m3">
-            <label>Actividad: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Gran contribuyente: </label>
-          </div>
-          <div class="input-field col s12 m3">
-            <label>Resolución contrato: </label>
+            <input disabled id="contacto" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.ccontribuyente" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="contacto">Gran contribuyente</label>
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <label>Representante: </label>
+        <div class="row" *ngIf="empresaEdit">
+          <div class="input-field col s12 m6" >
+            <input disabled id="resolucion" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.resolucionCntv" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="resolucion">Resolución Contrato</label>
           </div>
-          <div class="input-field col s12 m6">
-            <label>Ciudad: </label>
+          <div class="input-field col s12 m3" >
+            <input disabled id="representante" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.representante" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="representante">Representante</label>
+          </div>
+          <div class="input-field col s12 m3" >
+            <input disabled id="ciudad" type="text" class="validate input-nombre" [(ngModel)]="empresaEdit.idciudad" [ngModelOptions]="{standalone: true}">
+            <label class="active" for="ciudad">Ciudad</label>
           </div>
         </div>
       </form>

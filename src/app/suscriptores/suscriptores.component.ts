@@ -27,13 +27,18 @@ export class SuscriptoresComponent implements OnInit {
   estrato:string
   tec:string
   instalacion:string
+  persona1:string
   estado:string
   servicio:string
+  documento2:string
   tarifa:string
   tecnologias:string
+  entidad1:string
   persona:string
   prueba: string
   usuario:string
+  barrio2:string
+  zona2:string
   area:string
   barrioEdit: any
   entidad_id:string
@@ -74,6 +79,10 @@ export class SuscriptoresComponent implements OnInit {
     jQuery('#select1').on('change', () => {
       this.entidad = jQuery('#select1').val();
     });
+    jQuery('#select17').material_select();
+    jQuery('#select17').on('change', () => {
+      this.entidad1 = jQuery('#select17').val();
+    });
     jQuery('#select2').material_select();
     jQuery('#select2').on('change', () => {
       this.documento = jQuery('#select2').val();
@@ -86,9 +95,17 @@ export class SuscriptoresComponent implements OnInit {
     jQuery('#select4').on('change', () => {
       this.zona = jQuery('#select4').val();
     });
+    jQuery('#select20').material_select();
+    jQuery('#select20').on('change', () => {
+      this.zona2 = jQuery('#select20').val();
+    });
     jQuery('#select5').material_select();
     jQuery('#select5').on('change', () => {
       this.persona = jQuery('#select5').val();
+    });
+    jQuery('#select21').material_select();
+    jQuery('#select21').on('change', () => {
+      this.persona1 = jQuery('#select21').val();
     });
     jQuery('#select6').material_select();
     jQuery('#select6').on('change', () => {
@@ -114,6 +131,10 @@ export class SuscriptoresComponent implements OnInit {
     jQuery('#select9').on('change', () => {
       this.barrio = jQuery('#select9').val();
     });
+    jQuery('#select19').material_select();
+    jQuery('#select19').on('change', () => {
+      this.barrio2 = jQuery('#select19').val();
+    });
     jQuery('#select7').material_select();
     jQuery('#select7').on('change', () => {
       this.estrato = jQuery('#select7').val();
@@ -133,6 +154,10 @@ export class SuscriptoresComponent implements OnInit {
     jQuery('#select16').material_select();
     jQuery('#select16').on('change', () => {
       this.area = jQuery('#select16').val();
+    });
+    jQuery('#select18').material_select();
+    jQuery('#select18').on('change', () => {
+      this.documento2 = jQuery('#select18').val();
     });
   }
 
@@ -189,7 +214,7 @@ export class SuscriptoresComponent implements OnInit {
         'vivienda': vivienda,'telefono1': telcasa,'telefono2': telmovil,
         'contacto': contacto, 'neighborhood_id': this.barrio, 'zone_id': this.zona, 'fechacontrato': fechacon,
         'numerotvs': num, 'estado': estado, 'rate_id': this.tarifa, 'precinto': precinto,
-        'type_installation_id': this.inst,'tecnology_id': this.tec,'tiposervicio': this.servicio,
+        'type_installation_id': this.inst,'technology_id': this.tec,'tiposervicio': this.servicio,
         'areainstalacion': this.area, 'usuario': localStorage.getItem('usuario')
       }).subscribe(
         data => {
@@ -198,18 +223,19 @@ export class SuscriptoresComponent implements OnInit {
     }
   }
 
-  deleteSuscriptor(){
+  deleteSus(){
     if (this.susEdit) {
       console.log(this.susEdit.codigo)
-      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.codigo).subscribe(
+      this._suscriptorservicio.eliminarSuscriptor(this.susEdit.codigo, localStorage.getItem('entidad')).subscribe(
         data => {
           console.log(data);
       });
     }; 
   }
 
-  actualizarPersona() {
-    if (this.susEdit) {
+  actualizarSuscriptor(entidad, persona, estrato) {
+    if (this.susEdit) 
+    this.susEdit['estrato'] = this.estrato;
       this.susEdit['usuario'] = localStorage.getItem('usuario');
       console.log(this.susEdit);
       this._suscriptorservicio.actualizarSuscriptor(this.susEdit).subscribe(
@@ -217,6 +243,6 @@ export class SuscriptoresComponent implements OnInit {
           console.log(data);
         });
     };
-  }
+  
 
 }
