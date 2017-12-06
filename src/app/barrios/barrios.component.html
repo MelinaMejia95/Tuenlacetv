@@ -60,20 +60,18 @@
             <table class="bordered centered">
               <thead>
                 <tr>
-                  <th>Código Zona</th>
-                  <th>Nombre Zona</th>
                   <th>Código Barrio</th>
+                  <th>Código Zona</th>
                   <th>Nombre Barrio</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor='let barrio of barrios; let i = index'>
-                  <td>{{ barrio.zone_id }}</td>
-                  <td>{{ barrio.zone_id }}</td>
                   <td>
                     <input name="group1" type="radio" [id]="'radio_'+i" (change)="datoSeleccionado(barrio)" />
                     <label [attr.for]="'radio_'+i">{{ barrio.id }}</label>
                   </td>
+                  <td>{{ barrio.zone_id }}</td>
                   <td>{{ barrio.nombre }}</td>
 
                 </tr>

@@ -116,10 +116,10 @@
           </div>
         </div>
         <div class="row">
-          <select class="input-field col s12 m6" id="select5">
+          <select class="input-field col s12 m6" id="select5" #estado>
             <option value="" disabled selected>Estado</option>
-            <option value="A" #estado>Activo</option>
-            <option value="I" #estado>Inactivo</option>
+            <option value="A">Activo</option>
+            <option value="I">Inactivo</option>
           </select>
         </div>
 
@@ -164,10 +164,10 @@
               <input id="valor" type="text" class="validate" #valor [(ngModel)]="tarifaEdit.valor" [ngModelOptions]="{standalone: true}">
               <label class="active" for="valor">Valor</label>
             </div>
-            <select class="input-field col s12 m6" id="select6" >
+            <select class="input-field col s12 m6" id="select6" #estado1 >
               <option value="" disabled selected>Estado</option>
-              <option value="A" #estado>Activo</option>
-              <option value="I" #estado>Inactivo</option>
+              <option value="A" >Activo</option>
+              <option value="I">Inactivo</option>
             </select>
           </div>
         </div>

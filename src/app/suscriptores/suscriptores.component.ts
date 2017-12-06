@@ -20,6 +20,7 @@ export class SuscriptoresComponent implements OnInit {
   barrio: string
   entidad: string
   vivienda: string
+  estrato2: string
   documento: string
   inst: string
   zona: string
@@ -111,6 +112,10 @@ export class SuscriptoresComponent implements OnInit {
     jQuery('#select6').material_select();
     jQuery('#select6').on('change', () => {
       this.estrato = jQuery('#select6').val();
+    });
+    jQuery('#select22').material_select();
+    jQuery('#select22').on('change', () => {
+      this.estrato2 = jQuery('#select22').val();
     });
     jQuery('#select14').material_select();
     jQuery('#select14').on('change', () => {
@@ -237,23 +242,22 @@ export class SuscriptoresComponent implements OnInit {
 
   actualizarSuscriptor(entidad, persona, estrato) {
     if (this.susEdit)
-    this.persona
     this.susAct['codigo'] = this.susEdit['codigo_persona'];
-    this.susAct['type_document_id'] = this.susEdit['type_document_id'];
+    this.susAct['type_document_id'] = this.documento2;
     this.susAct['documento'] = this.susEdit['documento'];
     this.susAct['nombre1'] = this.susEdit['nombre1'];
     this.susAct['nombre2'] = this.susEdit['nombre2'];
     this.susAct['apellido1'] = this.susEdit['apellido1'];
     this.susAct['apellido2'] = this.susEdit['apellido2'];
     this.susAct['direccion'] = this.susEdit['direccionPersona'];
-    this.susAct['neighborhood_id'] = this.susEdit['barrioPersona'];
-    this.susAct['zone_id'] = this.susEdit['zonaPersona'];
+    this.susAct['neighborhood_id'] = this.barrio2;
+    this.susAct['zone_id'] = this.zona2;
     this.susAct['telefono1'] = this.susEdit['telefono1Persona'];
     this.susAct['telefono2'] = this.susEdit['telefono2Persona'];
     this.susAct['correo'] = this.susEdit['correo'];
     this.susAct['fechanac'] = this.susEdit['fechanac'];
-    this.susAct['tipopersona'] = this.persona;
-    this.susAct['estrato'] = this.estrato;
+    this.susAct['tipopersona'] = this.persona1;
+    this.susAct['estrato'] = this.estrato2;
     this.susAct['usuario'] = localStorage.getItem('usuario');
     console.log(this.susAct);
     this._suscriptorservicio.actualizarSuscriptor(this.susAct).subscribe(
